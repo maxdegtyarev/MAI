@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="Task2.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="33"/>
+        <CursorPos X="7" Y="63"/>
+        <UsageCount Value="47"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="Task2.pas"/>
+        <Caret Line="12" Column="8" TopLine="4"/>
+      </Position1>
+      <Position2>
+        <Filename Value="Task2.pas"/>
+        <Caret Line="20" Column="21"/>
+      </Position2>
+      <Position3>
+        <Filename Value="Task2.pas"/>
+        <Caret Line="22" Column="16"/>
+      </Position3>
+      <Position4>
+        <Filename Value="Task2.pas"/>
+        <Caret Line="27" Column="9" TopLine="20"/>
+      </Position4>
+      <Position5>
+        <Filename Value="Task2.pas"/>
+        <Caret Line="2" Column="8"/>
+      </Position5>
+      <Position6>
+        <Filename Value="Task2.pas"/>
+        <Caret Line="26" Column="15" TopLine="9"/>
+      </Position6>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
