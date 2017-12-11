@@ -40,10 +40,11 @@ type
   end;
 
 var
-  FD: Real;
-  InputCommand,InputString: string;
+  FD: real;
+  InputCommand, InputString: string;
   Head: Stack;
   Head_C: C_Stack;
+  InputFile: Text;
   HistoryFile: History;
 
 
@@ -64,16 +65,17 @@ var
     tf: string;
     k: integer;
   begin
-    tf:= '                                                ';
-    k:= 1;
-    while k <= length(TypeOfError) do begin
+    tf := '                                                ';
+    k := 1;
+    while k <= length(TypeOfError) do
+    begin
       tf[k] := TypeOfError[k];
-      inc(k);
+      Inc(k);
     end;
     clrscr;
     writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
     writeln('│                                                                             │');
-    writeln('│                     Ошибка! '+tf+'│');
+    writeln('│                     Ошибка! ' + tf + '│');
     writeln('│                                                                             │');
     writeln('└─────────────────────────────────────────────────────────────────────────────┘');
     writeln;
@@ -235,10 +237,12 @@ var
   var
     x, y: real;
     C: integer;
-    TMP, BUFFER: string;
+    TMP, BUFFER, FRUIT: string;
     Sym: char;
+    IMPER: integer;
   begin
     TMP := inval + '─';
+
     C := 1;
     while (TMP[C] <> '─') do
     begin
@@ -254,9 +258,30 @@ var
           Inc(C);
           Sym := TMP[C];
         end;
-        AddToStack(Head, StrToFloat(BUFFER));
-        BUFFER := '';
-        C := C - 1;
+
+        IMPER := 1;
+        //Экспресс-фича: ищет наличие повторяющихся запятых
+        while (IMPER <= Length(BUFFER)) do
+        begin
+          if BUFFER[IMPER] = ',' then
+            FRUIT := FRUIT + ',';
+          Inc(IMPER);
+        end;
+
+        if (LENGTH(FRUIT) > 1) then
+        begin
+          ErrorDialog('Некорректное выражение!');
+          exit;
+        end
+        else
+        begin
+          //Если выражение прошло проверку на корректность, то делаем все необходимые действия
+          AddToStack(Head, StrToFloat(BUFFER));
+          BUFFER := '';
+          C := C - 1;
+          FRUIT := '';
+          IMPER := 1;
+        end;
       end
       else if (Sym in UsingOperators) then
       begin
@@ -290,9 +315,10 @@ var
             begin
               ErrorDialog('попытка деления на ноль');
             end
-            else begin
-            x:= y / x;
-            AddToStack(Head, x);
+            else
+            begin
+              x := y / x;
+              AddToStack(Head, x);
             end;
           end;
           '^':
@@ -423,12 +449,12 @@ var
         '1':
         begin
           clrscr;
-          writeln('');
+          writeln;
           writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
           writeln('│                                                                             │');
           writeln('│    Введите математическое выражение. Числа должны вводиться через пробел    │');
           writeln('│                                                                             │');
-          writeln('│    *Например: (5+2)/2-4*3                                                   │');
+          writeln('│    Например: (5+2)/2-4*3                                                    │');
           writeln('│                                                                             │');
           writeln('│    Для удобства почитайте полную инструкцию к эксплуатации программы        │');
           writeln('│                                                                             │');
@@ -489,10 +515,60 @@ var
           readln();
           clrscr;
         end;
+        '2':
+        begin
+          clrscr;
+          writeln;
+          writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
+          writeln('│                                                                             │');
+          writeln('│    Укажите путь к файлу, который содержит записанные выражения              │');
+          writeln('│                                                                             │');
+          writeln('│    Например: file.txt                                                       │');
+          writeln('│                                                                             │');
+          writeln('│    Формат файла должен быть следующий:  Некое выражение_1                   │');
+          writeln('│                                         Некое выражение_2                   │');
+          writeln('│                                         ...                                 │');
+          writeln('│                                         Некое выражение_n                   │');
+          writeln('│                                                                             │');
+          writeln('│                                                                             │');
+          Write('│->Ввод:     ');
+          Read(InputString);
+          writeln('└─────────────────────────────────────────────────────────────────────────────┘');
+
+          //Associate
+          Assign(InputFile, InputString);
+            {$I-}
+          reset(InputFile);
+            {$I+}
+
+          if IOresult <> 0 then
+          begin
+            ErrorDialog('Введён несуществующий файл!');
+            readln();
+          end
+          else
+          begin
+            writeln;
+            writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
+            writeln('│                              Результаты ввода                               │');
+            writeln('│                                                                             │');
+            while (not (EOF(InputFile))) do
+            begin
+              inputstring := '';
+              Readln(InputFile, InputString);
+              Write(InputString);
+              //writeln(Round(Postfixtoreal(Infixtopostfix(Inputstring))));
+              readln;
+            end;
+            Close(InputFile);
+
+          end;
+
+        end;
         '0':
           halt(0);
         else
-           ErrorDialog('Введено некорректное значение');
+          ErrorDialog('Введено некорректное значение');
       end;
     end;
   end;

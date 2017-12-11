@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="CicleSpisok.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="79"/>
+        <CursorPos X="3" Y="113"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="11" HistoryIndex="10">
+      <Position1>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="68" Column="9" TopLine="40"/>
+      </Position1>
+      <Position2>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="96" Column="16" TopLine="61"/>
+      </Position2>
+      <Position3>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="70" Column="16" TopLine="50"/>
+      </Position3>
+      <Position4>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="99" Column="20" TopLine="65"/>
+      </Position4>
+      <Position5>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="69" Column="28" TopLine="51"/>
+      </Position5>
+      <Position6>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="63" Column="14" TopLine="55"/>
+      </Position6>
+      <Position7>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="93" TopLine="56"/>
+      </Position7>
+      <Position8>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="92" Column="13" TopLine="68"/>
+      </Position8>
+      <Position9>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="95" Column="34" TopLine="75"/>
+      </Position9>
+      <Position10>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="103" Column="32" TopLine="75"/>
+      </Position10>
+      <Position11>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="98" Column="9" TopLine="74"/>
+      </Position11>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
