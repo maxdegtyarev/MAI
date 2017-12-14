@@ -9,13 +9,13 @@
         <Filename Value="CicleSpisok.pas"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="79"/>
-        <CursorPos X="3" Y="113"/>
-        <UsageCount Value="24"/>
+        <TopLine Value="83"/>
+        <CursorPos X="16" Y="106"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
       </Unit0>
     </Units>
-    <JumpHistory Count="11" HistoryIndex="10">
+    <JumpHistory Count="14" HistoryIndex="13">
       <Position1>
         <Filename Value="CicleSpisok.pas"/>
         <Caret Line="68" Column="9" TopLine="40"/>
@@ -60,6 +60,18 @@
         <Filename Value="CicleSpisok.pas"/>
         <Caret Line="98" Column="9" TopLine="74"/>
       </Position11>
+      <Position12>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="99" Column="33" TopLine="79"/>
+      </Position12>
+      <Position13>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="106" Column="60" TopLine="83"/>
+      </Position13>
+      <Position14>
+        <Filename Value="CicleSpisok.pas"/>
+        <Caret Line="107" Column="62" TopLine="83"/>
+      </Position14>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

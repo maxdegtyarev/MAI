@@ -74,7 +74,7 @@ begin
       readln(C);
       val(C, K, A);
       if A <> 0 then
-        writeln('IDIOT');
+        writeln('NOT CORRECT');
     end;
 
     if (K = 0) then

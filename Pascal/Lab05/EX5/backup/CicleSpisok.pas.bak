@@ -75,9 +75,12 @@ var
       CURRENT := CURRENT^.Next;
       Down^.Next := Current;
       UP := UP^.Next;
+      write('DELETED: ');
+      writeln(TEMP^.Number);
       Dispose(TEMP);
 
     end;
+    write('OSTALSYA: ');
     writeln(CURRENT^.Number);
   end;
 
@@ -94,13 +97,14 @@ begin
     readln(St1); readln(St2);
     val(St1, N, QW);
     val(St2, F, ASZ);
+
     if (QW <> 0) or (ASZ <> 0) then
     begin
       writeln('Not correct!');
     end;
   end;
-
-  for R := 1 to N do
+  if (N = 0) or (F = 0) then begin writeln('0!!!');  readln(); halt(-1); end;
+  for R := 1 to abs(N) do
   begin
     AddToList(Head, Uzels);
   end;
@@ -110,7 +114,7 @@ begin
   UP := OSN^.Next; //Верхний шаг
   Down := Head;   //Нижний шаг
   Down^.Next := OSN;
-  Rounder(OSN, F);
+  Rounder(OSN, abs(F));
   readln;
 
 end.

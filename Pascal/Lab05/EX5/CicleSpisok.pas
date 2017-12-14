@@ -75,9 +75,12 @@ var
       CURRENT := CURRENT^.Next;
       Down^.Next := Current;
       UP := UP^.Next;
+      write('DELETED: ');
+      writeln(TEMP^.Number);
       Dispose(TEMP);
 
     end;
+    write('OSTALSYA: ');
     writeln(CURRENT^.Number);
   end;
 
@@ -94,12 +97,13 @@ begin
     readln(St1); readln(St2);
     val(St1, N, QW);
     val(St2, F, ASZ);
+
     if (QW <> 0) or (ASZ <> 0) then
     begin
       writeln('Not correct!');
     end;
   end;
-
+  if (N = 0) or (F = 0) or (N > 99999) or (F > 9000) then begin writeln('0!!!');  readln(); halt(-1); end;
   for R := 1 to abs(N) do
   begin
     AddToList(Head, Uzels);

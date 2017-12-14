@@ -85,7 +85,7 @@ begin
     end;
     A := 1;
   end;
-
+  writeln('----------------------------------');
   K := Dequeque(Head, Foot);
   while (K <> 0) do
   begin

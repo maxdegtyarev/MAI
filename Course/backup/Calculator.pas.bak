@@ -14,9 +14,11 @@ uses
 
 {Основные константы}
 const
-  UsingOperators: set of char = ['+', '-', '*', '/', '^'];
+  UsingOperators: set of char =
+    ['+', '-', '*', '/', '^', '!', 's', 'c', 't', 'g', 'l', 'q'];
+
   UsingNums: set of char = ['0'..'9', '.', ','];
-  PI = 3.14159;
+  FUNCTIONS = 9;
 
 
   {Вводим структуру данных: Стек}
@@ -40,15 +42,13 @@ type
   end;
 
 var
-  FD: real;
   InputCommand, InputString: string;
   Head: Stack;
   Head_C: C_Stack;
   InputFile: Text;
-  HistoryFile: History;
-
-
-
+  Functions_IN: array[1..FUNCTIONS] of string;
+  Functions_OUT: array[1..FUNCTIONS] of string;
+  Memory: real;
 
   {#######Элементарные функции#############}
 
@@ -57,6 +57,7 @@ var
   begin
     writeln('КРИТИЧЕСКАЯ ОШИБКА!!! -> ' + TypeOfError);
     readln();
+    readln;
     halt(1);
   end;
 
@@ -75,7 +76,16 @@ var
     clrscr;
     writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
     writeln('│                                                                             │');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
     writeln('│                     Ошибка! ' + tf + '│');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
     writeln('│                                                                             │');
     writeln('└─────────────────────────────────────────────────────────────────────────────┘');
     writeln;
@@ -83,56 +93,22 @@ var
     readln;
   end;
 
-  {Функция конвертирования выражения вида x|y/z в обычное число типа Real}
-  function toR(input: string): real;
+  function Factorial(input: real): real;
   var
-    C: integer;
-    R, T, F: real;
-    K: boolean;
-    L, G, B: string;
+    R, Rez: integer;
+    T: integer;
   begin
-
-    C := 1;
-    K := False;
-    while C <= length(input) do
+    R := 1;
+    Rez := 1;
+    T := Round(input);
+    if T = 0 then
+      Result := 0;
+    while (R <= T) do
     begin
-      if input[C] = '|' then
-      begin
-        K := True;
-        Inc(C);
-      end;
-      if input[C] = '/' then
-      begin
-        T := StrToFloat(L);
-        F := StrToFloat(G);
-        Inc(C);
-
-        while C <= length(input) do
-        begin
-          B := B + input[C];
-          Inc(C);
-        end;
-
-        R := StrToFloat(B);
-        if R = 0 then
-          ErrorHandler('#1 : попытка деления на ноль. Проверьте формат входного выражения');
-        break;
-      end;
-      if not (K) then
-      begin
-        L := L + input[C];
-      end
-      else
-      begin
-        G := G + input[C];
-      end;
-      Inc(C);
+      Rez := Rez * R;
+      Inc(R);
     end;
-    //Получаем результат
-    F := F / R;
-    T := T + F;
-    Result := T;
-
+    Result := Rez;
   end;
 
   {Функция выдачи приоритетов}
@@ -181,7 +157,7 @@ var
     R: real;
     Temp: Stack;
   begin
-    if H^.Next <> nil then
+    if H <> nil then
     begin
       R := H^.Data;
       Temp := H;
@@ -201,7 +177,7 @@ var
     Temp: C_stack;
     c: char;
   begin
-    if H^.Next <> nil then
+    if H <> nil then
     begin
       Temp := H;
       H := H^.Next;
@@ -233,13 +209,12 @@ var
   {++++++++Начало функционала конвертеров++++++++}
 
   {#Функция, которая получает из постфикса конечное число}
-  function PostfixToReal(inval: string): real;
+  function PostFixToReal(inval: string): real;
   var
     x, y: real;
     C: integer;
-    TMP, BUFFER, FRUIT: string;
+    TMP, BUFFER: string;
     Sym: char;
-    IMPER: integer;
   begin
     TMP := inval + '─';
 
@@ -259,29 +234,10 @@ var
           Sym := TMP[C];
         end;
 
-        IMPER := 1;
-        //Экспресс-фича: ищет наличие повторяющихся запятых
-        while (IMPER <= Length(BUFFER)) do
-        begin
-          if BUFFER[IMPER] = ',' then
-            FRUIT := FRUIT + ',';
-          Inc(IMPER);
-        end;
-
-        if (LENGTH(FRUIT) > 1) then
-        begin
-          ErrorDialog('Некорректное выражение!');
-          exit;
-        end
-        else
-        begin
-          //Если выражение прошло проверку на корректность, то делаем все необходимые действия
-          AddToStack(Head, StrToFloat(BUFFER));
-          BUFFER := '';
-          C := C - 1;
-          FRUIT := '';
-          IMPER := 1;
-        end;
+        //Если выражение прошло проверку на корректность, то делаем все необходимые действия
+        AddToStack(Head, StrToFloat(BUFFER));
+        BUFFER := '';
+        C := C - 1;
       end
       else if (Sym in UsingOperators) then
       begin
@@ -313,7 +269,7 @@ var
             y := GetElementFromStack(Head);
             if (x = 0) then
             begin
-              ErrorDialog('попытка деления на ноль');
+              ErrorDialog('#4 попытка деления на ноль');
             end
             else
             begin
@@ -326,6 +282,49 @@ var
             x := GetElementFromStack(Head);
             y := GetElementFromStack(Head);
             x := Power(y, x);
+            AddToStack(Head, x);
+          end;
+          '!':
+          begin
+            x := GetElementFromStack(Head);
+            x := Factorial(x);
+            AddToStack(Head, x);
+          end;
+          's':
+          begin
+            x := GetElementFromStack(Head);
+            x := sin(x);
+            AddToStack(Head, x);
+          end;
+          'c':
+          begin
+            x := GetElementFromStack(Head);
+            x := cos(x);
+            AddToStack(Head, x);
+          end;
+          't':
+          begin
+            x := GetElementFromStack(Head);
+            x := tan(x);
+            AddToStack(Head, x);
+          end;
+          'g':
+          begin
+            x := GetElementFromStack(Head);
+            x := (cos(x) / sin(x));
+            if round(sin(x)) = 0 then ErrorHandler('#5 Попытка деления на ноль');
+            AddToStack(Head, x);
+          end;
+          'l':
+          begin
+            x := GetElementFromStack(Head);
+            x := ln(x);
+            AddToStack(Head, x);
+          end;
+          'q':
+          begin
+            x := GetElementFromStack(Head);
+            x := sqrt(x);
             AddToStack(Head, x);
           end;
         end;
@@ -410,13 +409,90 @@ var
     Result := postfix;
   end;
 
+  function Preprocessor(input: string): string;
+  var
+    s: string;
+    i, k: integer;
+
+  begin
+    k := 1;
+    s := input;
+    while k <= FUNCTIONS do
+    begin
+      while (pos(Functions_IN[k], s) <> 0) do
+      begin
+        i := pos(Functions_IN[k], s);
+        Delete(s, i, length(Functions_IN[k]));
+        insert(Functions_OUT[k], s, i);
+      end;
+      Inc(k);
+    end;
+    Result := s;
+
+  end;
+
+  procedure WorkWithFile;
+  begin
+    clrscr;
+    writeln;
+    writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
+    writeln('│                                                                             │');
+    writeln('│    Укажите путь к файлу, который содержит записанные выражения              │');
+    writeln('│                                                                             │');
+    writeln('│    Например: file.txt                                                       │');
+    writeln('│                                                                             │');
+    writeln('│    Формат файла должен быть следующий:  Некое выражение_1                   │');
+    writeln('│                                         Некое выражение_2                   │');
+    writeln('│                                         ...                                 │');
+    writeln('│                                         Некое выражение_n                   │');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
+    Write('│->Ввод:     ');
+    Readln(InputString);
+    writeln('└─────────────────────────────────────────────────────────────────────────────┘');
+
+    //Associate
+    Assign(InputFile, InputString);
+    {$I-}
+    reset(InputFile);
+    {$I+}
+
+    if IOresult <> 0 then
+    begin
+      ErrorDialog('Введён несуществующий файл!');
+      readln();
+      exit;
+    end;
+
+    writeln;
+    writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
+    writeln('│                         Результаты ввода из файла                           │');
+    writeln('│                                                                             │');
+
+    while (not (EOF(InputFile))) do
+    begin
+      readln(InputFile, InputString);
+      Write('│-> Целая форма: ');
+      Write(Round(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring)))));
+      Write('  Дробная форма:');
+      Write(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring))));
+      writeln;
+    end;
+    writeln('│                                                                             │');
+    writeln('└─────────────────────────────────────────────────────────────────────────────┘');
+
+    Close(InputFile);
+    readln();
+  end;
+
   {+++++++++Конец функционала конвертеров++++++++++}
 
-  procedure DialogMenu();
+  procedure DialogMenu;
+
   begin
+    Postfixtoreal(Infixtopostfix('1'));
     writeln('────────────────────────────────────────────────────────────────────────────────');
     writeln('│Добро пожаловать в калькулятор дробей!');
-
     while True do
     begin
       clrscr;
@@ -434,7 +510,6 @@ var
       writeln('│                                                                             │');
       writeln('│ ~ 4, если вы хотите ввести выражение с параметрами, затем задать параметр   │');
       writeln('│                                                                             │');
-      writeln('│ ~ 5, если вы хотите посчитать выражение в постфиксной форме                 │');
       writeln('│                                                                             │');
       writeln('│ ~ 0, для выхода из программы                                                │');
       writeln('│                                                                             │');
@@ -471,7 +546,8 @@ var
           writeln(
             '│В целой форме (c округлением до целых):                                      │');
           Write('│>>>  ');
-          writeln(Round(Postfixtoreal(Infixtopostfix('((84+5)/2)*(3/(2+1))-27+1'))));
+
+          writeln(Round(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring)))));
           writeln(
             '│                                                                             │');
           writeln(
@@ -479,107 +555,49 @@ var
           writeln(
             '│                                                                             │');
           Write('│>>>  ');
-          writeln(Postfixtoreal(Infixtopostfix('((84+5)/2)*(3/(2+1))-27+1')));
+          writeln(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring))));
+
           writeln(
             '└─────────────────────────────────────────────────────────────────────────────┘');
           readln();
           readln();
           clrscr;
         end;
-        '5':
-        begin
-          clrscr;
-          writeln('');
-          writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
-          writeln('│                                                                             │');
-          writeln('│    Введите постфиксное выражение. Числа должны вводиться через пробел       │');
-          writeln('│                                                                             │');
-          Write('│->Ввод:     ');
-          Read(InputString);
-          writeln('└─────────────────────────────────────────────────────────────────────────────┘');
-          writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
-          writeln('│                            Успешно получен ответ:                           │');
-          writeln('│                                                                             │');
-          writeln('│                                                                             │');
-          writeln('│В целой форме:                                                               │');
-          Write('│>>>  ');
-          writeln(Round(PostfixToReal(InputString)));
-          writeln('│                                                                             │');
-          writeln('│В дробной форме:                                                             │');
-          writeln('│                                                                             │');
-          Write('│>>>  ');
-          writeln(PostfixToReal(InputString));
-          writeln('└─────────────────────────────────────────────────────────────────────────────┘');
-          readln();
-          readln();
-          readln();
-          clrscr;
-        end;
-        '2':
-        begin
-          clrscr;
-          writeln;
-          writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
-          writeln('│                                                                             │');
-          writeln('│    Укажите путь к файлу, который содержит записанные выражения              │');
-          writeln('│                                                                             │');
-          writeln('│    Например: file.txt                                                       │');
-          writeln('│                                                                             │');
-          writeln('│    Формат файла должен быть следующий:  Некое выражение_1                   │');
-          writeln('│                                         Некое выражение_2                   │');
-          writeln('│                                         ...                                 │');
-          writeln('│                                         Некое выражение_n                   │');
-          writeln('│                                                                             │');
-          writeln('│                                                                             │');
-          Write('│->Ввод:     ');
-          Read(InputString);
-          writeln('└─────────────────────────────────────────────────────────────────────────────┘');
-
-          //Associate
-          Assign(InputFile, InputString);
-            {$I-}
-          reset(InputFile);
-            {$I+}
-
-          if IOresult <> 0 then
-          begin
-            ErrorDialog('Введён несуществующий файл!');
-            readln();
-          end
-          else
-          begin
-            writeln;
-            writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
-            writeln('│                              Результаты ввода                               │');
-            writeln('│                                                                             │');
-            while (not (EOF(InputFile))) do
-            begin
-              inputstring := '';
-              Readln(InputFile, InputString);
-              Write(InputString);
-              //writeln(Round(Postfixtoreal(Infixtopostfix(Inputstring))));
-              readln;
-            end;
-            Close(InputFile);
-
-          end;
-
-        end;
+        '2': WorkWithFile;
         '0':
-          halt(0);
+          halt(-1);
         else
-          ErrorDialog('Введено некорректное значение');
+          ErrorDialog('Введено некорректное значение!');
       end;
     end;
   end;
 
 
+
 begin
   //Инициализация стеков
-  new(Head);
-  new(Head_C);
-  Head_C^.Next := nil;
-  Head^.Next := nil;
+  Head_C := nil;
+  Head := nil;
+
+  //Прекомпилирующие функции
+  Functions_IN[1] := 'sin';
+  Functions_IN[2] := 'cos';
+  Functions_IN[3] := 'tg';
+  Functions_IN[4] := 'ctg';
+  Functions_IN[5] := 'ln';
+  Functions_IN[6] := 'p';
+  Functions_IN[7] := 'e';
+  Functions_IN[8] := '|';
+  Functions_IN[9] := 'sqrt';
+  Functions_OUT[1] := 's';
+  Functions_OUT[2] := 'c';
+  Functions_OUT[3] := 't';
+  Functions_OUT[4] := 'g';
+  Functions_OUT[5] := 'l';
+  Functions_OUT[6] := '314159265358/100000000000';
+  Functions_OUT[7] := '271828182845/100000000000';
+  Functions_OUT[8] := '+';
+  Functions_OUT[9] := 'q';
 
 
   //Вызываем диалоговое меню
