@@ -18,6 +18,7 @@ const
     ['+', '-', '*', '/', '^', '!', 's', 'c', 't', 'g', 'l', 'q'];
 
   UsingNums: set of char = ['0'..'9', '.', ','];
+  Nums: set of char = ['0'..'9'];
   FUNCTIONS = 9;
 
 
@@ -45,10 +46,13 @@ var
   InputCommand, InputString: string;
   Head: Stack;
   Head_C: C_Stack;
-  InputFile: Text;
+  InputFile, OutFile: Text;
   Functions_IN: array[1..FUNCTIONS] of string;
   Functions_OUT: array[1..FUNCTIONS] of string;
-  Memory: real;
+  MemoryR, Cache: real;
+  MemoryI: integer;
+  Smem, Smemi, MemC: string;
+  MemO: char;
 
   {#######Элементарные функции#############}
 
@@ -311,8 +315,10 @@ var
           'g':
           begin
             x := GetElementFromStack(Head);
+            if round(sin(x)) = 0 then
+              ErrorHandler('#5 Попытка деления на ноль');
+
             x := (cos(x) / sin(x));
-            if round(sin(x)) = 0 then ErrorHandler('#5 Попытка деления на ноль');
             AddToStack(Head, x);
           end;
           'l':
@@ -409,6 +415,35 @@ var
     Result := postfix;
   end;
 
+  procedure CheckIn(input: string);
+  var
+    Cr, Punk: integer;
+  begin
+
+    Cr := 1;
+    Punk := 0;
+    while (Cr <= Length(input)) do
+    begin
+
+      if input[Cr] in UsingNums then
+      begin
+        Inc(Cr);
+        while (input[Cr] <> ' ') and not (input[Cr] in UsingOperators) and
+          (Cr <= Length(input)) do
+        begin
+          if (input[Cr] = '.') or (input[Cr] = ',') then
+            Inc(Punk);
+          Inc(Cr);
+        end;
+        if Punk > 1 then
+          ErrorHandler('#6 Некорректное выражение!!!');
+        Punk := 0;
+        Cr := Cr - 1;
+      end;
+      Inc(Cr);
+    end;
+  end;
+
   function Preprocessor(input: string): string;
   var
     s: string;
@@ -453,13 +488,15 @@ var
 
     //Associate
     Assign(InputFile, InputString);
+    Assign(OutFile, InputString + '_RESULT.txt');
     {$I-}
     reset(InputFile);
+    rewrite(OutFile);
     {$I+}
 
     if IOresult <> 0 then
     begin
-      ErrorDialog('Введён несуществующий файл!');
+      ErrorDialog('Произошла ошибка при работе с файлами');
       readln();
       exit;
     end;
@@ -472,20 +509,29 @@ var
     while (not (EOF(InputFile))) do
     begin
       readln(InputFile, InputString);
+      writeln(InputString);
+      CheckIn(Preprocessor(InputString));
+      MemoryR := Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring)));
+      MemoryI := Round(MemoryR);
       Write('│-> Целая форма: ');
-      Write(Round(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring)))));
+      Write(MemoryI);
       Write('  Дробная форма:');
-      Write(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring))));
+      Write(MemoryR);
+      str(MemoryR, smem);
+      str(MemoryI, smemi);
+      writeln(OutFile, InputString + ' = ' + smem + ' = ' + smemi);
+      smem := '';
+      smemi := '';
       writeln;
     end;
     writeln('│                                                                             │');
+    writeln('│                         Результаты записаны в файл _RESULT.txt              │');
     writeln('└─────────────────────────────────────────────────────────────────────────────┘');
 
     Close(InputFile);
+    Close(OutFile);
     readln();
   end;
-
-  {+++++++++Конец функционала конвертеров++++++++++}
 
   procedure DialogMenu;
 
@@ -506,9 +552,7 @@ var
       writeln('│                                                                             │');
       writeln('│ ~ 2, если вы хотите прочитать выражение или множество выражений из файла    │');
       writeln('│                                                                             │');
-      writeln('│ ~ 3, для открытия помощи, где вы можете ознакомиться со всем функционалом   │');
       writeln('│                                                                             │');
-      writeln('│ ~ 4, если вы хотите ввести выражение с параметрами, затем задать параметр   │');
       writeln('│                                                                             │');
       writeln('│                                                                             │');
       writeln('│ ~ 0, для выхода из программы                                                │');
@@ -535,6 +579,8 @@ var
           writeln('│                                                                             │');
           Write('│->Ввод:     ');
           Read(InputString);
+          CheckIn(Preprocessor(InputString));
+          ReadLN(MemC);
           writeln('└─────────────────────────────────────────────────────────────────────────────┘');
           writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
           writeln(
@@ -546,20 +592,30 @@ var
           writeln(
             '│В целой форме (c округлением до целых):                                      │');
           Write('│>>>  ');
+          MemoryR := Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring)));
 
-          writeln(Round(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring)))));
-          writeln(
-            '│                                                                             │');
+
+          //Если
+          case memO of
+            '+': MemoryR := MemoryR + cache;
+            '-': MemoryR := cache - MemoryR;
+            '*': MemoryR := MemoryR * cache;
+            '/': MemoryR := cache / MemoryR;
+          end;
+
+          //Округляем
+          MemoryI := Round(MemoryR);
+
+          writeln(MemoryI);
+          writeln('│                                                                             │');
           writeln(
             '│В дробной форме:                                                             │');
           writeln(
             '│                                                                             │');
           Write('│>>>  ');
-          writeln(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring))));
+          writeln(MemoryR);
 
-          writeln(
-            '└─────────────────────────────────────────────────────────────────────────────┘');
-          readln();
+
           readln();
           clrscr;
         end;
@@ -598,7 +654,6 @@ begin
   Functions_OUT[7] := '271828182845/100000000000';
   Functions_OUT[8] := '+';
   Functions_OUT[9] := 'q';
-
 
   //Вызываем диалоговое меню
   DialogMenu();
