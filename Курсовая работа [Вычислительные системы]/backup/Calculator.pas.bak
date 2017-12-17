@@ -18,7 +18,7 @@ const
     ['+', '-', '*', '/', '^', '!', 's', 'c', 't', 'g', 'l', 'q'];
 
   UsingNums: set of char = ['0'..'9', '.', ','];
-  Nums: set of char = ['0'..'9'];
+  Nums: set of char = ['0'..'9','.', '(',',', ')','+', '-', '*', '/', '^', '!', 's', 'c', 't', 'g', 'l', 'q'];
   FUNCTIONS = 9;
 
 
@@ -417,23 +417,28 @@ var
 
   procedure CheckIn(input: string);
   var
-    Cr, Punk: integer;
+    Pc,Cr,Cc, Punk: integer;
+
   begin
 
     Cr := 1;
     Punk := 0;
+    Cc:= 0;
     while (Cr <= Length(input)) do
     begin
-
+      if input[Cr] = '(' then inc(Cc);
+      if input[Cr] = ')' then dec(Cc);
+      if not(input[Cr] in Nums) then ErrorHandler('#8 Некорректное выражение!!!');
       if input[Cr] in UsingNums then
       begin
         Inc(Cr);
         while (input[Cr] <> ' ') and not (input[Cr] in UsingOperators) and
-          (Cr <= Length(input)) do
+          (Cr <= Length(input)) and (input[cr] <> ')') do
         begin
           if (input[Cr] = '.') or (input[Cr] = ',') then
             Inc(Punk);
           Inc(Cr);
+
         end;
         if Punk > 1 then
           ErrorHandler('#6 Некорректное выражение!!!');
@@ -442,6 +447,7 @@ var
       end;
       Inc(Cr);
     end;
+    if Punk + Cc <> 0 then ErrorHandler('#7 Некорректное выражение!!!');
   end;
 
   function Preprocessor(input: string): string;
@@ -509,10 +515,9 @@ var
     while (not (EOF(InputFile))) do
     begin
       readln(InputFile, InputString);
-      writeln(InputString);
       CheckIn(Preprocessor(InputString));
       MemoryR := Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring)));
-      MemoryI := Round(MemoryR);
+      MemoryI := Round(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring))));
       Write('│-> Целая форма: ');
       Write(MemoryI);
       Write('  Дробная форма:');
@@ -654,7 +659,7 @@ begin
   Functions_OUT[7] := '271828182845/100000000000';
   Functions_OUT[8] := '+';
   Functions_OUT[9] := 'q';
-
   //Вызываем диалоговое меню
   DialogMenu();
 end.
+
