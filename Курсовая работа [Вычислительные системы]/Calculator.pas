@@ -18,7 +18,8 @@ const
     ['+', '-', '*', '/', '^', '!', 's', 'c', 't', 'g', 'l', 'q'];
 
   UsingNums: set of char = ['0'..'9', '.', ','];
-  Nums: set of char = ['0'..'9','.', '(',',', ')','+', '-', '*', '/', '^', '!', 's', 'c', 't', 'g', 'l', 'q'];
+  Nums: set of char = ['0'..'9', '.', '(', ',', ')', '+', '-', '*',
+    '/', '^', '!', 's', 'c', 't', 'g', 'l', 'q', ' '];
   FUNCTIONS = 9;
 
 
@@ -37,10 +38,6 @@ type
     Next: C_stack;
   end;
 
-  History = record
-    inputstring: string;
-    outputstring: string;
-  end;
 
 var
   InputCommand, InputString: string;
@@ -417,18 +414,21 @@ var
 
   procedure CheckIn(input: string);
   var
-    Pc,Cr,Cc, Punk: integer;
+    Pc, Cr, Cc, Punk: integer;
 
   begin
 
     Cr := 1;
     Punk := 0;
-    Cc:= 0;
+    Cc := 0;
     while (Cr <= Length(input)) do
     begin
-      if input[Cr] = '(' then inc(Cc);
-      if input[Cr] = ')' then dec(Cc);
-      if not(input[Cr] in Nums) then ErrorHandler('#8 Некорректное выражение!!!');
+      if input[Cr] = '(' then
+        Inc(Cc);
+      if input[Cr] = ')' then
+        Dec(Cc);
+      if not (input[Cr] in Nums) then
+        ErrorHandler('#8 Некорректное выражение!!!');
       if input[Cr] in UsingNums then
       begin
         Inc(Cr);
@@ -447,7 +447,8 @@ var
       end;
       Inc(Cr);
     end;
-    if Punk + Cc <> 0 then ErrorHandler('#7 Некорректное выражение!!!');
+    if Punk + Cc <> 0 then
+      ErrorHandler('#7 Некорректное выражение!!!');
   end;
 
   function Preprocessor(input: string): string;
@@ -470,6 +471,56 @@ var
     end;
     Result := s;
 
+  end;
+
+  procedure Help;
+  begin
+    clrscr;
+    writeln;
+    writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
+    writeln('│                                                                             │');
+    writeln('│    Добро пожаловать в программу помощи пользователям!                       │');
+    writeln('│                                                                             │');
+    writeln('│    Введите run для получения инструкции                                    │');
+    writeln('│                                                                             │');
+    writeln('│    Введите 0 для выхода из программы помощи пользователям!                  │');
+    writeln('│                                                                             │');
+    writeln('│                                                                             │');
+    Write('│->Ввод:     ');
+    Readln(InputString);
+    writeln('└─────────────────────────────────────────────────────────────────────────────┘');
+    case InputString of
+      '0': exit;
+      'run':
+      begin
+        writeln('┌─────────────────────────────────────────────────────────────────────────────┐');
+        writeln('│                                                                             │');
+        writeln('│    В рассчётах можно использовать следующие числа, операции, функции:       │');
+        writeln('│    + Целые числа, т.е -1000, 54, 979 и т.д                                  │');
+        writeln('│    + Рациональные числа, т.е 259.7, 25.8                                    │');
+        writeln('│    + Обыкновенные дроби, т.е в программе вводится как 6|8/10 или 21/77      │');
+        writeln('│    + Скобки, т.е открывающие и закрывающие скобки ( )                       │');
+        writeln('│    + Константы, т.е число Пи вводится как p, а число е вводится как e       │');
+        writeln('│    + Операторы, т.е                                                         │');
+        writeln('│    + Оператор сложения: +                                                   │');
+        writeln('│    + Оператор вычитания: -                                                  │');
+        writeln('│    + Оператор умножения: *                                                  │');
+        writeln('│    + Оператор деления: /                                                    │');
+        writeln('│    + Оператор возведения в степень: ^                                       │');
+        writeln('│    + Оператор получения факториала числа: !                                 │');
+        writeln('│    + Тригонометрические функции, при этом все аргументы должны быть в rad   │');
+        writeln('│    + Синус: sin()                                                           │');
+        writeln('│    + Косинус: cos()                                                         │');
+        writeln('│    + Тангенс: tg()                                                          │');
+        writeln('│    + Котангенс: ctg()                                                       │');
+        writeln('│    + Функция вытаскивания числа из под знака корня, т.е sqrt()              │');
+        writeln('│                                                                             │');
+        writeln('└─────────────────────────────────────────────────────────────────────────────┘');
+        readln;
+      end;
+      else
+        ErrorDialog('Ошибка! Введено неверное значение!');
+    end;
   end;
 
   procedure WorkWithFile;
@@ -520,7 +571,7 @@ var
       MemoryI := Round(Postfixtoreal(Infixtopostfix(Preprocessor(Inputstring))));
       Write('│-> Целая форма: ');
       Write(MemoryI);
-      Write('  Дробная форма:');
+      Write('  Вещественная форма:');
       Write(MemoryR);
       str(MemoryR, smem);
       str(MemoryI, smemi);
@@ -557,7 +608,7 @@ var
       writeln('│                                                                             │');
       writeln('│ ~ 2, если вы хотите прочитать выражение или множество выражений из файла    │');
       writeln('│                                                                             │');
-      writeln('│                                                                             │');
+      writeln('│ ~ 3, если вам нужна помощь                                                  │');
       writeln('│                                                                             │');
       writeln('│                                                                             │');
       writeln('│ ~ 0, для выхода из программы                                                │');
@@ -613,18 +664,18 @@ var
 
           writeln(MemoryI);
           writeln('│                                                                             │');
-          writeln(
-            '│В дробной форме:                                                             │');
+          writeln('│В вещественной форме:                                                        │');
           writeln(
             '│                                                                             │');
           Write('│>>>  ');
-          writeln(MemoryR);
+          writeln(MemoryR: 0: 2);
 
 
           readln();
           clrscr;
         end;
         '2': WorkWithFile;
+        '3': Help;
         '0':
           halt(-1);
         else
@@ -662,4 +713,3 @@ begin
   //Вызываем диалоговое меню
   DialogMenu();
 end.
-
