@@ -9,137 +9,137 @@
         <Filename Value="Calculator.pas"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="600"/>
-        <CursorPos X="94" Y="612"/>
-        <UsageCount Value="55"/>
+        <TopLine Value="692"/>
+        <CursorPos X="60" Y="709"/>
+        <UsageCount Value="58"/>
         <Loaded Value="True"/>
       </Unit0>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="616" TopLine="596"/>
+        <Caret Line="381" TopLine="376"/>
       </Position1>
       <Position2>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="617" TopLine="596"/>
+        <Caret Line="385" TopLine="377"/>
       </Position2>
       <Position3>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="618" TopLine="596"/>
+        <Caret Line="399" TopLine="394"/>
       </Position3>
       <Position4>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="616" TopLine="596"/>
+        <Caret Line="411" Column="51" TopLine="406"/>
       </Position4>
       <Position5>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="617" TopLine="596"/>
+        <Caret Line="352" TopLine="333"/>
       </Position5>
       <Position6>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="618" TopLine="596"/>
+        <Caret Line="199" TopLine="180"/>
       </Position6>
       <Position7>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="616" TopLine="596"/>
+        <Caret Line="205" TopLine="180"/>
       </Position7>
       <Position8>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="617" TopLine="596"/>
+        <Caret Line="207" TopLine="180"/>
       </Position8>
       <Position9>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="618" TopLine="596"/>
+        <Caret Line="354" TopLine="335"/>
       </Position9>
       <Position10>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="616" TopLine="596"/>
+        <Caret Line="355" TopLine="335"/>
       </Position10>
       <Position11>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="617" TopLine="596"/>
+        <Caret Line="357" TopLine="335"/>
       </Position11>
       <Position12>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="642" Column="67" TopLine="622"/>
+        <Caret Line="150" TopLine="131"/>
       </Position12>
       <Position13>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="622" Column="58" TopLine="598"/>
+        <Caret Line="151" TopLine="131"/>
       </Position13>
       <Position14>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="618" TopLine="598"/>
+        <Caret Line="152" TopLine="131"/>
       </Position14>
       <Position15>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="621" Column="105" TopLine="598"/>
+        <Caret Line="153" TopLine="131"/>
       </Position15>
       <Position16>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="617" Column="97" TopLine="606"/>
+        <Caret Line="154" TopLine="131"/>
       </Position16>
       <Position17>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="553" Column="46" TopLine="535"/>
+        <Caret Line="411" TopLine="393"/>
       </Position17>
       <Position18>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="447" TopLine="410"/>
+        <Caret Line="352" TopLine="333"/>
       </Position18>
       <Position19>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="509" Column="52" TopLine="484"/>
+        <Caret Line="199" TopLine="180"/>
       </Position19>
       <Position20>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="213" Column="102" TopLine="197"/>
+        <Caret Line="205" TopLine="180"/>
       </Position20>
       <Position21>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="39" Column="52" TopLine="23"/>
+        <Caret Line="207" TopLine="180"/>
       </Position21>
       <Position22>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="430" Column="24" TopLine="421"/>
+        <Caret Line="354" TopLine="335"/>
       </Position22>
       <Position23>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="427" Column="28" TopLine="408"/>
+        <Caret Line="355" TopLine="335"/>
       </Position23>
       <Position24>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="425" Column="41" TopLine="408"/>
+        <Caret Line="359" TopLine="335"/>
       </Position24>
       <Position25>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="427" Column="27" TopLine="408"/>
+        <Caret Line="362" Column="63" TopLine="335"/>
       </Position25>
       <Position26>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="429" Column="39" TopLine="416"/>
+        <Caret Line="382" Column="16" TopLine="349"/>
       </Position26>
       <Position27>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="444" Column="50" TopLine="416"/>
+        <Caret Line="367" Column="78" TopLine="349"/>
       </Position27>
       <Position28>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="21" Column="114"/>
+        <Caret Line="369" Column="37" TopLine="348"/>
       </Position28>
       <Position29>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="520" Column="16" TopLine="491"/>
+        <Caret Line="379" Column="28" TopLine="351"/>
       </Position29>
       <Position30>
         <Filename Value="Calculator.pas"/>
-        <Caret Line="523" Column="85" TopLine="498"/>
+        <Caret Line="726" Column="16" TopLine="691"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
   <Debugging>
-    <Watches Count="4">
+    <Watches Count="5">
       <Item2>
         <Expression Value="Cr"/>
       </Item2>
@@ -149,6 +149,9 @@
       <Item4>
         <Expression Value="input"/>
       </Item4>
+      <Item5>
+        <Expression Value="postfix"/>
+      </Item5>
     </Watches>
   </Debugging>
 </CONFIG>
