@@ -665,8 +665,7 @@ var
           writeln(MemoryI);
           writeln('+                                                                             +');
           writeln('+In real form:                                                                +');
-          writeln(
-            '+                                                                             +');
+          writeln('+                                                                             +');
           Write('+>>>  ');
           writeln(MemoryR: 0: 2);
 
