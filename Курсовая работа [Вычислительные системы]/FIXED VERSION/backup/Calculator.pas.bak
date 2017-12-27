@@ -559,8 +559,8 @@ var
     end;
 
     writeln;
-    writeln('┌-----------------------------------------------------------------------------┐');
-    writeln('+                         Output from file                          +');
+    writeln('+-----------------------------------------------------------------------------+');
+    writeln('+                         Output from file                                    +');
     writeln('+                                                                             +');
 
     while (not (EOF(InputFile))) do
@@ -581,7 +581,7 @@ var
       writeln;
     end;
     writeln('+                                                                             +');
-    writeln('+                         Result have written to     _RESULT.txt              +');
+    writeln('+                   Result have written to _RESULT.txt                        +');
     writeln('+-----------------------------------------------------------------------------+');
 
     Close(InputFile);

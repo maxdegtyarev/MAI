@@ -38,7 +38,7 @@ var
 begin
   clrscr;
   Q := 1;
-  while (Q <> 0) do
+ while (Q <> 0) do
   begin
     writeln('Hello, dear user! Give me a chislo from 1 to mnogo');
     readln(S);
@@ -46,8 +46,11 @@ begin
     if Q <> 0 then
       writeln('Not correct input');
   end;
-  if N <= 0 then
+  if (N <= 0) or (N > 20) then begin
+    writeln('Badly');
+    readln;
     exit;
+  end;
   Assign(rf, 'out-3.txt');
   {$I-}
   rewrite(rf);

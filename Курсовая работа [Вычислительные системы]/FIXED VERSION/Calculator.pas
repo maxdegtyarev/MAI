@@ -323,6 +323,7 @@ var
           'q':
           begin
             x := GetElementFromStack(Head);
+            if x < 0 then ErrorHandler('Can not make SQRT < 0');
             x := sqrt(x);
             AddToStack(Head, x);
           end;
