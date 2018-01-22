@@ -1,0 +1,239 @@
+program Task2;
+uses crt;
+
+var
+  strErrors : array[1..8] of string = ('Error input file', 'Error output file', 'Incorrect one line comment', 'Incorrect many line comment',
+  'Incorrect command', 'Incorrect first operand', 'Incorrect second operand', 'Too many mistakes at input');
+  Abc : array[1..26] of integer;
+  fOut : text;
+
+  //Фатальные ошибки
+procedure ErrorHandler(n : integer);
+begin
+  writeln(strErrors[n]);
+  readkey;
+  halt(n);
+end;
+
+procedure ErrorHandler_S(n, num : integer);
+begin
+  writeln('Error on string ', num);
+  writeln(strErrors[n]);
+  readkey;
+  halt(n);
+end;
+
+function GetInput() : integer;
+var
+  str : string;
+  i, x, err, k : integer;
+begin
+  k := 4;
+  repeat
+    err := 0;
+    x := 0;
+    readln(str);
+    for i := 1 to length(str) do begin
+      if not ((str[i] in ['0'..'9']) or (str[i] in ['A'..'F']) or (str[i] in ['a'..'f'])) then begin
+        dec(k);
+        writeln('ERROR-> MISTAKE IN INPUT LINE', k);
+        err := 1;
+        readln;
+        break;
+      end
+      else begin
+         if str[i] in ['0'..'9'] then
+           x := x * 10 + ord(str[i]) - ord('0')
+         else
+           x := x * 10 + ord(UpCase(str[i])) - 55;
+      end;
+    end;
+  until (err = 0) or (k = 0);
+  if k = 0 then
+    ErrorHandler(8);
+  GetInput := x;
+end;
+
+
+function forPut(str : string; var tmpLen : integer) : integer;
+var
+  i, k, base, res : integer;
+  tmpStr : string;
+begin
+  tmpLen := 0;
+  delete(str, 1, 5);
+  k := 0;
+  base := 10;
+  res := 0;
+  tmpStr := '';
+  for i := 1 to length(str) do begin
+    if ord(str[i]) > ord('F') then begin
+      k := i;
+      break;
+    end
+    else
+      tmpStr := tmpStr + str[i];
+  end;
+  if k <> 0 then begin
+    if str[k] = 'X' then
+      base := 16
+    else if str[k] = 'O' then
+      base := 8;
+  end;
+  if base = 10 then begin
+    for i := 1 to length(tmpStr) do begin
+      if not (tmpStr[i] in ['0'..'9']) then
+        break
+      else begin
+        inc(tmpLen);
+        res := res * 10 + ord(tmpStr[i]) - 48;
+      end;
+    end;
+  end
+  else if base = 8 then begin
+    for i := 1 to length(tmpStr) do begin
+      if not (tmpStr[i] in ['0'..'7']) then
+        ErrorHandler_S(9, 5)
+      else
+        res := res * 10 + ord(tmpStr[i]) - 48;
+    end;
+  end
+  else begin
+    for i := 1 to length(tmpStr) do begin
+      if not ((tmpStr[i] in ['0'..'9']) or (tmpStr[i] in ['A'..'F'])) then
+        ErrorHandler_S(9, 5)
+      else begin
+        if tmpStr[i] in ['0'..'9'] then
+          res := res * 16 + ord(tmpStr[i]) - 48
+        else
+          res := res * 16 + ord(tmpStr[i]) - 55;
+      end;
+    end;
+  end;
+  if (base = 8) or (base = 16) then
+    tmpLen := length(tmpStr) + 1;
+  forPut := res;
+end;
+
+var
+  fIn : text;
+  num, ar1, ar2, R1, R2, i, k, tmpLen : integer;
+  c : char;
+  buf : string;
+  com : array[1..15] of string = ('IN', 'OUT', 'NOT', 'COPY', 'PUT', 'AND', 'OR', 'XOR', 'EQV', 'NOR', 'NAND', 'IMP', 'BIMP', 'COIMP', 'BCOIMP');
+
+begin
+  clrscr;
+  num := 1;
+  buf := '';
+  assign(fIn, 'in.txt');
+  {$I-}
+    reset(fIn);
+  {$I+}
+  if IOResult <> 0 then begin
+    ErrorHandler(1);
+  end;
+  assign(fOut, 'out.txt');
+  {$I-}
+    rewrite(fOut);
+  {$I+}
+  if IOResult <> 0 then begin
+    ErrorHandler(2);
+  end;
+  repeat
+    read(fIn, c);
+    if (c = #13) then
+      inc(num);
+    if (c = '#') then begin
+      while (c <> #13) and (c <> #26) do begin
+        read(fIn, c);
+        if (c = #13) then
+          inc(num);
+        if (c = '#') or (c = '}') or (c = '{') then begin
+          ErrorHandler_S(4, num);
+        end;
+      end;
+    end
+    else if c = '{' then begin
+      while (c <> '}') do begin
+        read(fIn, c);
+        if (c = #13) then
+          inc(num);
+        if (c = '#') or (c = '{') then
+          ErrorHandler_S(4, num);
+      end;
+    end
+    else if (c <> #13) and (c <> #10) and (c <> ' ') and (c <> #26) then begin
+      buf := buf + UpCase(c);
+    end;
+    if (length(buf) > 10) or (c = #26) then begin
+      repeat
+        k := 0;
+        for i := 1 to 15 do begin
+          if pos(com[i], buf) = 1 then begin
+            k := i;
+            break;
+          end;
+        end;
+        if k = 0 then
+          ErrorHandler_S(5, num);
+        ar1 := ord(buf[length(com[k]) + 1]) - ord('A') + 1;
+        if k < 4 then begin
+          if (ar1 < 1) or (ar1 > 26) then
+            ErrorHandler_S(6, num);
+          case k of
+            1 : begin
+              writeln('INPUTTING VALUE:', chr(ar1 + 64));
+              write(fOut, char(ar1 + 64), ' = ');
+              Abc[ar1] := GetInput();
+              writeln(fOut, Abc[ar1]);
+            end;
+            2 : begin
+              writeln(fOut, 'OUT ', chr(ar1 + 64));
+              writeln('OUT ', chr(ar1 + 64));
+            end;
+            3 : Abc[ar1] := not Abc[ar1];
+          end;
+        end
+        else begin
+            if k <> 5 then begin
+              ar2 := ord(buf[length(com[k]) + 3]) - ord('A') + 1;
+            if (ar2 < 1) or (ar2 > 26) then
+              ErrorHandler_S(7, num);
+          end;
+          R1 := Abc[ar1];
+          R2 := Abc[ar2];
+          case k of
+            4 : R1 := R2;
+            5 : R1 := forPut(buf, tmpLen);
+            6 : R1 := R1 and R2;
+            7 : R1 := R1 or R2;
+            8 : R1 := R1 xor R2;
+            9 : R1 := not (R1 xor R2);
+            10 : R1 := not (R1 or R2);
+            11 : R1 := not (R1 and R2);
+            12 : R1 := (not R1) or R2;
+            13 : R1 := R1 or (not R2);
+            14 : R1 := not ((not R1) or R2);
+            15 : R1 := not (R1 or (not R2));
+          end;
+          Abc[ar1] := R1;
+          if k <> 5 then
+            writeln(fOut, chr(ar1 + 64), ' ', com[k], ' ', chr(ar2 + 64), '=', R1)
+          else
+            writeln(fOut, chr(ar1 + 64), ' ', com[k], ' ', R1, '=', R1);
+        end;
+        if k = 5 then
+          delete(buf, 1, 5 + tmpLen)
+        else if k < 4 then
+          delete(buf, pos(com[k], buf), length(com[k]) + 1)
+        else
+          delete(buf, pos(com[k], buf), length(com[k]) + 3);
+      until not ((length(buf) <> 0) and (c = #26));
+    end;
+  until c = #26;
+  close(fIn);
+  close(fOut);
+  readkey;
+end.
+

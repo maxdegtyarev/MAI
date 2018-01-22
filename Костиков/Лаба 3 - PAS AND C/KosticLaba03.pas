@@ -4,6 +4,7 @@ const
   STACK_SIZE = 30;
   UsingNums: set of char = ['0'..'9'];
   UsingOperators: set of char = ['+', '-', '*', '/', '^', '%'];
+  Nums: set of char = ['0'..'9','%','(', ',', ')', '+', '-', '*','/', '^', ' '];
 type
   Stack = ^Node;
 
@@ -26,7 +27,8 @@ var
   InStr, BUFF: string;
   Sym: char;
   E: integer;
-  mm: BOOLEAN;
+  mm: boolean;
+
   procedure AddToStack(var H: Stack; Data: integer);
   begin
     //Если стек только начали использзовать
@@ -80,7 +82,7 @@ var
     case operators of
       '+', '-': Result := 1;
       '*', '/', '%': Result := 2;
-      '^': Result := 3;
+      '^': Result := 10;
       '(', ')': Result := 0;
     end;
   end;
@@ -124,25 +126,17 @@ var
   end;
 
   function Stepen(A, B: integer): integer;
+  var
+    i: integer;
   begin
     if B = 0 then
       Result := 1;
     if B = 1 then
       Result := 1;
-    if B < 0 then
-    begin
-      Result := 1;
-
-    end
-    else
-    begin
-      while B <> 0 do
-      begin
-        A := A * A;
-        B := B - 1;
-      end;
-      Result := A;
+    for i:= 1 to B-1 do begin
+      B:= B*B;
     end;
+    result:= B;
   end;
 
   procedure Schet(var H: Stack; Operation: char);
@@ -185,17 +179,62 @@ var
       begin
         x := GetElementFromStack(H);
         y := GetElementFromStack(H);
+        WRITELN(X,y);
         x := Stepen(y, x);
+        writeln(x);
         AddToStack(h, x);
       end;
       '%':
       begin
         x := GetElementFromStack(H);
         y := GetElementFromStack(H);
+        if x = 0 then
+          ErrorHandler('#1 DIVIDE ON ZIRO MOTHERFUCKER!!!');
         x := y mod x;
         AddToStack(h, x);
       end;
     end;
+  end;
+
+  procedure CheckIn(input: string);
+  var
+    Pc, Cr, Cc, Lns, Punk: integer;
+
+  begin
+
+    Cr := 1;
+    Punk := 0;
+    Cc := 0;
+    while (Cr <= Length(input)) do
+    begin
+      if input[Cr] = '(' then
+        Inc(Cc);
+      if input[Cr] = ')' then
+        Dec(Cc);
+      if not (input[Cr] in Nums) then
+        ErrorHandler('#8 Not correct expression!!!');
+      if input[Cr] in UsingNums then
+      begin
+        Inc(Cr);
+        while (input[Cr] <> ' ') and not (input[Cr] in UsingOperators) and
+          (Cr <= Length(input)) and (input[cr] <> ')') do
+        begin
+          if (input[Cr] = '.') or (input[Cr] = ',') then
+            Inc(Punk);
+
+          Inc(Cr);
+          Inc(Lns);
+        end;
+        if (Punk > 1) or (Lns > 32) then
+          ErrorHandler('#6 Not correct expression!!!');
+        Punk := 0;
+        Lns := 0;
+        Cr := Cr - 1;
+      end;
+      Inc(Cr);
+    end;
+    if Punk + Cc <> 0 then
+      ErrorHandler('#7 Not correct expression!!!');
   end;
 
   function char_stack_IsEmpty(var H: Stack_C): boolean;
@@ -285,32 +324,38 @@ begin
   reset(fIn);
   rewrite(fout);
   {$I+}
-  mm:= false;
-  if IORESULT <> 0 then errorhandler('File Error');
+  mm := False;
+  if IORESULT <> 0 then
+    errorhandler('File Error');
 
-  while not(EOF(fIn)) do begin
-     readln(fIn,inStr);
-     for E:= 1 to Length(inStr) do begin
-        Sym:= inStr[E];
-        if Sym = ';' then begin
-          MM:= TRUE;
-            write(Fout, BUFF);
-            write(Fout,' = ');
-            write(Fout, InfixToPostfix(BUFF));
-            write(Fout,' = ');
-            write(Fout, Antigorner(GetElementFromStack(Head)));
-            writeln(Fout);
-            BUFF:= '';
-        end
-        else
-        begin
-           BUFF:= BUFF + Sym;
-        end;
-     end;
-     IF mm = false then ErrorHandler('IDIOT');
+  while not (EOF(fIn)) do
+  begin
+    readln(fIn, inStr);
+    for E := 1 to Length(inStr) do
+    begin
+      Sym := inStr[E];
+      if Sym = ';' then
+      begin
+        MM := True;
+        Write(Fout, BUFF);
+        Write(Fout, ' = ');
+        CheckIn(BUFF);
+        Write(Fout, InfixToPostfix(BUFF));
+        Write(Fout, ' = ');
+        Write(Fout, Antigorner(GetElementFromStack(Head)));
+        writeln(Fout);
+        BUFF := '';
+      end
+      else
+      begin
+        BUFF := BUFF + Sym;
+      end;
+    end;
+    if mm = False then
+      ErrorHandler('IDIOT');
   end;
-  close(fin);
-  close(fout);
+  Close(fin);
+  Close(fout);
   readln;
   //Начинаем решение задачи
 

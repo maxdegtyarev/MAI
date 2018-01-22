@@ -189,7 +189,7 @@ begin
   writeln('Found points:');
   for i := 1 to N do
   begin
-    min := 9999999999;
+    min := 999999999;
     for j := 1 to M do
       if min > Q[i, j] then
         min := Q[i, j];
