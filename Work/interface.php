@@ -44,6 +44,8 @@ class UserInterface
 
   function nowAge()
   {
+    if ($this->birth == "")
+      return 0;
     $birthDate = strtotime($this->birth);
     $userAge = date('Y') - date('Y', $birthDate);
       if (date('md', $birthDate) > date('md')) {
