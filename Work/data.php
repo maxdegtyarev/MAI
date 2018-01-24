@@ -8,6 +8,8 @@ $UserObject = new UserInterface($_POST);
 echo $UserObject->nowAge();
 echo '<br>';
 echo $UserObject->enrollYear();
+echo '<br>';
 
+echo $UserObject->writeToDb();
 unset($UserObject);
 ?>
