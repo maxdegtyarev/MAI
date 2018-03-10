@@ -1,0 +1,34 @@
+object form_Main: Tform_Main
+  Left = 302
+  Height = 240
+  Top = 134
+  Width = 320
+  Caption = 'Hello World'
+  Menu = MainMenu1
+  LCLVersion = '1.6.4.0'
+  object MainMenu1: TMainMenu
+    left = 24
+    top = 16
+    object Spravka: TMenuItem
+      Caption = 'Справка'
+      object Source: TMenuItem
+        Caption = 'Source'
+      end
+      object About: TMenuItem
+        Caption = 'About'
+        OnClick = AboutClick
+      end
+      object Help: TMenuItem
+        Caption = 'Help'
+        OnClick = HelpClick
+      end
+    end
+    object MyFile: TMenuItem
+      Caption = 'Файл'
+      object Exitt: TMenuItem
+        Caption = 'Выход'
+        OnClick = ExittClick
+      end
+    end
+  end
+end

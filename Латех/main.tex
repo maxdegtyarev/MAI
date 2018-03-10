@@ -1,7 +1,38 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
 \usepackage[russian]{babel}
-\usepackage{titlesec}
-\titleformat{\section}{\small\bfseries}{\thesection}{12pt}{}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{bitpattern}
+\usepackage{longtable}
+\newcommand{\paragraphT}[1]{%
+	\noindent \makebox[0pt][r]{$\blacktriangleright$\ }%
+	\refstepcounter{paragraph}%
+	\textbf{\arabic{paragraph}.} #1}
+	
+\newcommand{\point}{%
+	\noindent \makebox[0pt][r]{$\bullet$\ }%
+	\textbf{}}
+	
+\renewcommand{\paragraph}[1]{%
+	\noindent \makebox[0pt][r]{\ }%
+	\refstepcounter{paragraph}%
+	\textbf{\arabic{paragraph}.} #1}
+%\addtolength{\hoffset}{-.5in}
+%\addtolength{\textwidth}{-1.5in}
+%\addtolength{\textheitgh}{-.5in}
+
+\addtolength{\hoffset}{-3.5cm}
+\addtolength{\voffset}{-4cm}
+\addtolength{\textwidth}{4cm}
+\addtolength{\textheight}{-2cm}
+\newcommand{\M}[1]{[\textit{М{}#1}]}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\newcommand\tabn[1][0.5cm]{\hspace*{#1}}
+\def\@labEQ[#1]#2{\ifpdf\anchor{#1}\fi$$#2\eqno(#1)$$\ignorespaces}
+
 \input{content.tex}
