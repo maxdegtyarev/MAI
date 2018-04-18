@@ -1,0 +1,489 @@
+object MainForm: TMainForm
+  Left = 349
+  Height = 525
+  Top = 55
+  Width = 361
+  Caption = 'Калькулятор'
+  ClientHeight = 505
+  ClientWidth = 361
+  Color = 8388863
+  Menu = menum
+  LCLVersion = '1.6.4.0'
+  object button_one: TButton
+    Left = 0
+    Height = 48
+    Top = 409
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '1'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 0
+  end
+  object button_two: TButton
+    Left = 56
+    Height = 48
+    Top = 409
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '2'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object button_three: TButton
+    Left = 112
+    Height = 48
+    Top = 409
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '3'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object button_four: TButton
+    Left = 0
+    Height = 48
+    Top = 361
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '4'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object button_five: TButton
+    Left = 56
+    Height = 48
+    Top = 361
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '5'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 4
+  end
+  object button_six: TButton
+    Left = 112
+    Height = 48
+    Top = 361
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '6'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 5
+  end
+  object button_seven: TButton
+    Left = 0
+    Height = 48
+    Top = 313
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '7'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 6
+  end
+  object button_eigth: TButton
+    Left = 56
+    Height = 48
+    Top = 313
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '8'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object button_nine: TButton
+    Left = 112
+    Height = 48
+    Top = 313
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '9'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 8
+  end
+  object button_ziro: TButton
+    Left = 56
+    Height = 48
+    Top = 457
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '0'
+    Color = 8388863
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = button_oneClick
+    ParentFont = False
+    TabOrder = 9
+  end
+  object button_negate: TButton
+    Left = 0
+    Height = 48
+    Top = 457
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '+-'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 10
+  end
+  object button_punct: TButton
+    Left = 112
+    Height = 48
+    Top = 457
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = ','
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 11
+  end
+  object button_rez: TButton
+    Left = 168
+    Height = 49
+    Top = 457
+    Width = 192
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '='
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 12
+  end
+  object button_plus: TButton
+    Left = 168
+    Height = 48
+    Top = 409
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '+'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 13
+  end
+  object button_minus: TButton
+    Left = 168
+    Height = 48
+    Top = 361
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '-'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 14
+  end
+  object button_umn: TButton
+    Left = 168
+    Height = 48
+    Top = 313
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'x'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 15
+  end
+  object button_del: TButton
+    Left = 168
+    Height = 48
+    Top = 265
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '/'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 16
+  end
+  object button_cans: TButton
+    Left = 112
+    Height = 48
+    Top = 265
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '<x'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 17
+  end
+  object button_c: TButton
+    Left = 56
+    Height = 48
+    Top = 265
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'C'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 18
+  end
+  object button_clear: TButton
+    Left = 0
+    Height = 48
+    Top = 265
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'CE'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 19
+  end
+  object button_procent: TButton
+    Left = 0
+    Height = 48
+    Top = 217
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '%'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 20
+  end
+  object button_sqrt: TButton
+    Left = 56
+    Height = 48
+    Top = 217
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'sqrt'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 21
+  end
+  object button_sqr: TButton
+    Left = 112
+    Height = 48
+    Top = 217
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'x^2'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 22
+  end
+  object button_obr: TButton
+    Left = 168
+    Height = 48
+    Top = 217
+    Width = 56
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = '1/x'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 23
+  end
+  object button_mem_plus: TButton
+    Left = 224
+    Height = 48
+    Top = 217
+    Width = 136
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'M+'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 24
+  end
+  object button_mem_minus: TButton
+    Left = 224
+    Height = 48
+    Top = 265
+    Width = 136
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'M-'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 25
+  end
+  object button_mem_save: TButton
+    Left = 224
+    Height = 48
+    Top = 313
+    Width = 136
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'MS'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 26
+  end
+  object button_mem_save1: TButton
+    Left = 224
+    Height = 48
+    Top = 361
+    Width = 136
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'MC'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 27
+  end
+  object button_mem_read: TButton
+    Left = 224
+    Height = 48
+    Top = 409
+    Width = 136
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'MR'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 28
+  end
+  object menum: TMainMenu
+    top = 65528
+    object menu_file: TMenuItem
+      Caption = 'Файл'
+      object menu_file_exit: TMenuItem
+        Caption = 'Выход'
+        OnClick = menu_file_exitClick
+      end
+    end
+    object menu_help: TMenuItem
+      Caption = '?'
+      object menu_help_author: TMenuItem
+        Caption = 'Автор'
+      end
+      object menu_help_help: TMenuItem
+        Caption = 'Помощь'
+      end
+      object menu_help_source: TMenuItem
+        Caption = 'Исходный код'
+      end
+    end
+  end
+end

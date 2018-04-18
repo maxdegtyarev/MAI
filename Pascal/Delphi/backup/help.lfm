@@ -1,0 +1,32 @@
+object form_help: Tform_help
+  Left = 252
+  Height = 382
+  Top = 41
+  Width = 506
+  BorderStyle = bsToolWindow
+  Caption = 'Помощь'
+  ClientHeight = 382
+  ClientWidth = 506
+  LCLVersion = '1.8.2.0'
+  object help_text: TMemo
+    Left = 7
+    Height = 368
+    Top = 8
+    Width = 489
+    Lines.Strings = (
+      'Обыкновенный калькулятор. Здесь присутствуют все основные операции.'
+      'Как считать?'
+      'Если текущее значение 0'
+      '1) Вводите число'
+      '2) Нажимаете ='
+      '3) Вводите второе число'
+      '4) Нажимаете необходимую операцию'
+      ''
+      'Если текущее значение не 0'
+      '1) Вводите число'
+      '2) Нажимаете необходимую операцию'
+    )
+    ReadOnly = True
+    TabOrder = 0
+  end
+end

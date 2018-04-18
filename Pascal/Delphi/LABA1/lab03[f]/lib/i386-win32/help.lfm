@@ -1,0 +1,24 @@
+object form_help: Tform_help
+  Left = 665
+  Height = 240
+  Top = 285
+  Width = 320
+  BorderStyle = bsToolWindow
+  Caption = 'Помощь'
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '1.8.2.0'
+  object help_text: TMemo
+    Left = 7
+    Height = 216
+    Top = 8
+    Width = 305
+    Lines.Strings = (
+      'Ваша цель - сделать так, чтобы все галочки были в состоянии (отмечены).'
+      'Сделать это не так просто, но вполне реально.'
+      'Как только все галочки будут отмечены - вы победите.'
+    )
+    ReadOnly = True
+    TabOrder = 0
+  end
+end

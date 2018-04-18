@@ -1,0 +1,230 @@
+object form_Main: Tform_Main
+  Left = 414
+  Height = 337
+  Top = 167
+  Width = 529
+  Caption = 'Задача 5'
+  ClientHeight = 317
+  ClientWidth = 529
+  Menu = main_menu
+  PopupMenu = popup_Window
+  LCLVersion = '1.8.2.0'
+  object button_Main: TButton
+    Left = 16
+    Height = 33
+    Top = 56
+    Width = 88
+    Caption = 'Конфета'
+    PopupMenu = button_popup
+    TabOrder = 0
+  end
+  object edit_Main: TEdit
+    Left = 40
+    Height = 23
+    Top = 216
+    Width = 102
+    PopupMenu = edit_popup
+    TabOrder = 1
+    Text = 'edit_Main'
+  end
+  object combo_Main: TComboBox
+    Left = 184
+    Height = 23
+    Top = 56
+    Width = 280
+    ItemHeight = 15
+    Items.Strings = (
+      '465'
+      '5'
+      '6465'
+      '465'
+      '489'
+      '798'
+      '798'
+      '7897984798'
+      '7489'
+      '498'
+      '489'
+      '46'
+      '57656577464754657'
+      '4657'
+      '674'
+      '6574658465'
+      '46584865'
+      '465'
+      '65465'
+      '6565'
+      '4165'
+      '41654'
+      '6514'
+      '654'
+      '765'
+      '72'
+      '6572'
+      '657265'
+      '71657'
+      '6517'
+      '65'
+    )
+    PopupMenu = combo_popup
+    TabOrder = 2
+    Text = 'combo_Main'
+  end
+  object memo_Main: TMemo
+    Left = 136
+    Height = 57
+    Top = 112
+    Width = 328
+    PopupMenu = memo_Popup
+    ScrollBars = ssAutoVertical
+    TabOrder = 3
+  end
+  object popup_Window: TPopupMenu
+    left = 32
+    top = 288
+    object hide_button: TMenuItem
+      Caption = 'Кнопка'
+      OnClick = hide_buttonClick
+    end
+    object hide_combo: TMenuItem
+      Caption = 'ComboBox'
+      OnClick = hide_comboClick
+    end
+    object hide_memo: TMenuItem
+      Caption = 'Memo'
+      OnClick = hide_memoClick
+    end
+    object hide_edit: TMenuItem
+      Caption = 'Edit'
+      OnClick = hide_editClick
+    end
+  end
+  object button_popup: TPopupMenu
+    left = 280
+    top = 264
+    object bm_editname: TMenuItem
+      Caption = 'Изменить название'
+      OnClick = bm_editnameClick
+    end
+    object bm_editsize: TMenuItem
+      Caption = 'Изменить размер [Random]'
+      OnClick = bm_editsizeClick
+    end
+    object bm_editenable: TMenuItem
+      Caption = 'Авторазмер'
+      OnClick = bm_editenableClick
+    end
+  end
+  object combo_popup: TPopupMenu
+    left = 488
+    top = 304
+    object cm_sort: TMenuItem
+      Caption = 'Сортировать'
+      OnClick = cm_sortClick
+    end
+    object cm_add: TMenuItem
+      Caption = 'Добавить'
+      OnClick = cm_addClick
+    end
+    object cm_delete: TMenuItem
+      Caption = 'Удалить ITEM'
+      OnClick = cm_deleteClick
+    end
+  end
+  object edit_popup: TPopupMenu
+    left = 424
+    top = 272
+    object ed_font: TMenuItem
+      Caption = 'Изменить шрифт'
+      OnClick = ed_fontClick
+    end
+    object ed_Color: TMenuItem
+      Caption = 'Изменить цвет textbox'
+      OnClick = ed_ColorClick
+    end
+    object ed_OnlyRead: TMenuItem
+      Caption = 'Только для чтения'
+      OnClick = ed_OnlyReadClick
+    end
+  end
+  object ed_FontDialog: TFontDialog
+    MinFontSize = 0
+    MaxFontSize = 0
+    left = 88
+    top = 288
+  end
+  object ed_ColorDialog: TColorDialog
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    left = 136
+    top = 288
+  end
+  object memo_Popup: TPopupMenu
+    left = 472
+    top = 224
+    object memo_AddStr: TMenuItem
+      Caption = 'Добавить строку'
+      OnClick = memo_AddStrClick
+    end
+    object memo_DeleteStr: TMenuItem
+      Caption = 'Удалить строку'
+      OnClick = memo_DeleteStrClick
+    end
+    object memo_LoadFromFile: TMenuItem
+      Caption = 'Загрузить из файла'
+      OnClick = memo_LoadFromFileClick
+    end
+  end
+  object memo_OpenDialog: TOpenDialog
+    Filter = 'текстовые документы|*.txt'
+    left = 184
+    top = 288
+  end
+  object main_menu: TMainMenu
+    left = 368
+    top = 264
+    object main_menu_file: TMenuItem
+      Caption = 'Файл'
+      object main_menu_file_exit: TMenuItem
+        Caption = 'Выход'
+        OnClick = main_menu_file_exitClick
+      end
+    end
+    object main_menu_help: TMenuItem
+      Caption = '?'
+      object menu_menu_help_author: TMenuItem
+        Caption = 'Автор'
+        OnClick = menu_menu_help_authorClick
+      end
+      object menu_menu_help_source: TMenuItem
+        Caption = 'Исходный код'
+        OnClick = menu_menu_help_sourceClick
+      end
+      object menu_menu_help_help: TMenuItem
+        Caption = 'Помощь'
+        OnClick = menu_menu_help_helpClick
+      end
+    end
+  end
+end

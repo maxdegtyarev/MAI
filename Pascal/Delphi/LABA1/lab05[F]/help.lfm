@@ -1,0 +1,23 @@
+object form_help: Tform_help
+  Left = 448
+  Height = 314
+  Top = 167
+  Width = 389
+  BorderStyle = bsToolWindow
+  Caption = 'Помощь'
+  ClientHeight = 314
+  ClientWidth = 389
+  LCLVersion = '1.8.2.0'
+  object help_text: TMemo
+    Left = 1
+    Height = 294
+    Top = 13
+    Width = 382
+    Lines.Strings = (
+      'Данная программа иллюстрирует использование обьектов Delphi'
+      'Используйте правую кнопку мыши'
+    )
+    ReadOnly = True
+    TabOrder = 0
+  end
+end

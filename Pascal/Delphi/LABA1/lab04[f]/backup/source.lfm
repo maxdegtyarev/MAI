@@ -1,0 +1,51 @@
+object form_sc: Tform_sc
+  Left = 114
+  Height = 523
+  Top = 290
+  Width = 640
+  BorderStyle = bsToolWindow
+  Caption = 'Исходный код'
+  ClientHeight = 523
+  ClientWidth = 640
+  LCLVersion = '1.8.2.0'
+  object source_files: TRadioGroup
+    Left = 8
+    Height = 512
+    Top = 3
+    Width = 308
+    Anchors = [akTop, akLeft, akBottom]
+    AutoFill = True
+    Caption = 'Файлы'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 492
+    ClientWidth = 304
+    Items.Strings = (
+      'game.pas'
+      'main.lpr'
+      'main.res'
+      'source.pas'
+      'source.lfm'
+      'author.pas'
+      'author.lfm'
+      'help.pas'
+    )
+    OnClick = source_filesClick
+    TabOrder = 0
+  end
+  object source_code: TMemo
+    Left = 322
+    Height = 508
+    Top = 9
+    Width = 313
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ReadOnly = True
+    ScrollBars = ssAutoVertical
+    TabOrder = 1
+  end
+end

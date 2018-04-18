@@ -1,0 +1,26 @@
+object Form1: TForm1
+  Left = 502
+  Height = 378
+  Top = 43
+  Width = 815
+  Caption = 'Form1'
+  ClientHeight = 378
+  ClientWidth = 815
+  LCLVersion = '1.8.2.0'
+  object sg: TStringGrid
+    Left = 8
+    Height = 312
+    Top = 8
+    Width = 794
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 102
+    Height = 25
+    Top = 346
+    Width = 75
+    Caption = 'Button1'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+end

@@ -1,0 +1,331 @@
+object main_form: Tmain_form
+  Left = 619
+  Height = 339
+  Top = 291
+  Width = 647
+  BorderStyle = bsToolWindow
+  Caption = 'Игра'
+  ClientHeight = 319
+  ClientWidth = 647
+  Menu = MainMenu
+  OnCreate = FormCreate
+  LCLVersion = '1.8.2.0'
+  object game_playbuttonid0: TButton
+    Left = 25
+    Height = 33
+    Top = 39
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 0
+  end
+  object game_playbuttonid1: TButton
+    Left = 25
+    Height = 33
+    Top = 80
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 1
+  end
+  object game_playbuttonid2: TButton
+    Left = 24
+    Height = 33
+    Top = 120
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 2
+  end
+  object game_playbuttonid3: TButton
+    Left = 25
+    Height = 33
+    Top = 160
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 3
+  end
+  object game_playbuttonid4: TButton
+    Left = 25
+    Height = 33
+    Top = 200
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 4
+  end
+  object game_playbuttonid5: TButton
+    Left = 24
+    Height = 33
+    Top = 240
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 5
+  end
+  object game_playbuttonid6: TButton
+    Left = 120
+    Height = 33
+    Top = 40
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 6
+  end
+  object game_playbuttonid7: TButton
+    Left = 120
+    Height = 33
+    Top = 80
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 7
+  end
+  object game_playbuttonid8: TButton
+    Left = 120
+    Height = 33
+    Top = 120
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 8
+  end
+  object game_playbuttonid9: TButton
+    Left = 120
+    Height = 33
+    Top = 160
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 9
+  end
+  object game_playbuttonid10: TButton
+    Left = 120
+    Height = 33
+    Top = 200
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 10
+  end
+  object game_playbuttonid11: TButton
+    Left = 120
+    Height = 33
+    Top = 240
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 11
+  end
+  object game_playbuttonid12: TButton
+    Left = 216
+    Height = 33
+    Top = 40
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 12
+  end
+  object game_playbuttonid13: TButton
+    Left = 216
+    Height = 33
+    Top = 80
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 13
+  end
+  object game_playbuttonid14: TButton
+    Left = 216
+    Height = 33
+    Top = 120
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 14
+  end
+  object game_playbuttonid15: TButton
+    Left = 216
+    Height = 33
+    Top = 160
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 15
+  end
+  object game_playbuttonid16: TButton
+    Left = 216
+    Height = 33
+    Top = 200
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 16
+  end
+  object game_playbuttonid17: TButton
+    Left = 216
+    Height = 33
+    Top = 240
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 17
+  end
+  object game_playbuttonid18: TButton
+    Left = 312
+    Height = 33
+    Top = 40
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 18
+  end
+  object game_playbuttonid19: TButton
+    Left = 312
+    Height = 33
+    Top = 80
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 19
+  end
+  object game_playbuttonid20: TButton
+    Left = 312
+    Height = 33
+    Top = 120
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 20
+  end
+  object game_playbuttonid21: TButton
+    Left = 312
+    Height = 33
+    Top = 160
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 21
+  end
+  object game_playbuttonid22: TButton
+    Left = 312
+    Height = 33
+    Top = 200
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 22
+  end
+  object game_playbuttonid23: TButton
+    Left = 312
+    Height = 33
+    Top = 240
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 23
+  end
+  object game_playbuttonid24: TButton
+    Left = 408
+    Height = 33
+    Top = 40
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 24
+  end
+  object game_playbuttonid25: TButton
+    Left = 408
+    Height = 33
+    Top = 80
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 25
+  end
+  object game_playbuttonid26: TButton
+    Left = 408
+    Height = 33
+    Top = 120
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 26
+  end
+  object game_playbuttonid27: TButton
+    Left = 408
+    Height = 33
+    Top = 160
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 27
+  end
+  object game_playbuttonid28: TButton
+    Left = 408
+    Height = 33
+    Top = 200
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 28
+  end
+  object game_playbuttonid29: TButton
+    Left = 408
+    Height = 33
+    Top = 240
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 29
+  end
+  object game_playbuttonid30: TButton
+    Left = 504
+    Height = 33
+    Top = 39
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 30
+  end
+  object game_playbuttonid31: TButton
+    Left = 504
+    Height = 33
+    Top = 80
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 31
+  end
+  object game_playbuttonid32: TButton
+    Left = 504
+    Height = 33
+    Top = 120
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 32
+  end
+  object game_playbuttonid33: TButton
+    Left = 504
+    Height = 33
+    Top = 160
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 33
+  end
+  object game_playbuttonid34: TButton
+    Left = 504
+    Height = 33
+    Top = 200
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 34
+  end
+  object game_playbuttonid35: TButton
+    Left = 504
+    Height = 33
+    Top = 240
+    Width = 87
+    OnClick = game_playbuttonid0Click
+    TabOrder = 35
+  end
+  object MainMenu: TMainMenu
+    left = 592
+    top = 272
+    object main_file: TMenuItem
+      Caption = 'Файл'
+      object main_exit: TMenuItem
+        Caption = 'Выход'
+        OnClick = main_exitClick
+      end
+    end
+    object main_reset: TMenuItem
+      Caption = 'Начать'
+      OnClick = main_resetClick
+    end
+    object main_help: TMenuItem
+      Caption = '?'
+      object main_help_author: TMenuItem
+        Caption = 'Автор'
+        OnClick = main_help_authorClick
+      end
+      object main_help_help: TMenuItem
+        Caption = 'Помощь'
+        OnClick = main_help_helpClick
+      end
+      object main_help_source: TMenuItem
+        Caption = 'Исходный код'
+        OnClick = main_help_sourceClick
+      end
+    end
+  end
+end

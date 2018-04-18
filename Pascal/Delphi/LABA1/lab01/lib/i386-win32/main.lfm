@@ -1,0 +1,33 @@
+object main_form: Tmain_form
+  Left = 406
+  Height = 398
+  Top = 578
+  Width = 413
+  Caption = 'Калькулятор'
+  Menu = main_form
+  LCLVersion = '1.8.2.0'
+  object main_form: TMainMenu
+    left = 24
+    top = 16
+    object menu_file: TMenuItem
+      Caption = 'Файл'
+      object menu_file_exit: TMenuItem
+        Caption = 'Выход'
+        OnClick = menu_file_exitClick
+      end
+    end
+    object menu_help: TMenuItem
+      Caption = '?'
+      object menu_help_help: TMenuItem
+        Caption = 'Помощь'
+      end
+      object menu_help_source: TMenuItem
+        Caption = 'Исходники'
+      end
+      object menu_help_author: TMenuItem
+        Caption = 'Автор'
+        OnClick = menu_help_authorClick
+      end
+    end
+  end
+end

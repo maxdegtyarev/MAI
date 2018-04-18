@@ -1,0 +1,105 @@
+object form_Main: Tform_Main
+  Left = 787
+  Height = 334
+  Top = 298
+  Width = 435
+  Caption = 'Игра'
+  ClientHeight = 314
+  ClientWidth = 435
+  Menu = main_menu
+  LCLVersion = '1.8.2.0'
+  object checkgroup_Main: TCheckGroup
+    Left = 0
+    Height = 297
+    Top = 8
+    Width = 469
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFill = True
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.TopBottomSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 6
+    ClientHeight = 277
+    ClientWidth = 465
+    Columns = 6
+    Items.Strings = (
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+      ' '
+    )
+    OnChangeBounds = checkgroup_MainClick
+    OnItemClick = checkgroup_MainItemClick
+    TabOrder = 0
+    Data = {
+      2400000002020202020202020202020202020202020202020202020202020202
+      0202020202020202
+    }
+  end
+  object main_menu: TMainMenu
+    left = 336
+    top = 248
+    object main_menu_file: TMenuItem
+      Caption = 'Файл'
+      object main_menu_file_exit: TMenuItem
+        Caption = 'Выход'
+        OnClick = main_menu_file_exitClick
+      end
+    end
+    object main_menu_reset: TMenuItem
+      Caption = 'Сбросить'
+      OnClick = main_menu_resetClick
+    end
+    object main_menu_help: TMenuItem
+      Caption = '?'
+      object menu_menu_help_author: TMenuItem
+        Caption = 'Автор'
+        OnClick = menu_menu_help_authorClick
+      end
+      object menu_menu_help_source: TMenuItem
+        Caption = 'Исходный код'
+        OnClick = menu_menu_help_sourceClick
+      end
+      object menu_menu_help_help: TMenuItem
+        Caption = 'Помощь'
+        OnClick = menu_menu_help_helpClick
+      end
+    end
+  end
+end

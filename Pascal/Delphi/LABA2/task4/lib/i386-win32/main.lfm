@@ -1,0 +1,62 @@
+object main_form: Tmain_form
+  Left = 767
+  Height = 543
+  Top = 445
+  Width = 998
+  Caption = 'main_form'
+  ClientHeight = 543
+  ClientWidth = 998
+  OnCreate = FormCreate
+  LCLVersion = '1.8.2.0'
+  object input: TStringGrid
+    Left = 16
+    Height = 296
+    Top = 120
+    Width = 448
+    ColCount = 0
+    FixedCols = 0
+    FixedRows = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    PopupMenu = MatrixMenu
+    RowCount = 0
+    TabOrder = 0
+  end
+  object input_cols: TSpinEdit
+    Left = 176
+    Height = 23
+    Top = 432
+    Width = 82
+    OnChange = input_colsChange
+    TabOrder = 1
+    Value = 1
+  end
+  object getr: TButton
+    Left = 512
+    Height = 25
+    Top = 256
+    Width = 75
+    Caption = 'getr'
+    OnClick = getrClick
+    TabOrder = 2
+  end
+  object Main_open: TOpenDialog
+    left = 24
+    top = 480
+  end
+  object MatrixMenu: TPopupMenu
+    left = 80
+    top = 480
+    object menu_load: TMenuItem
+      Caption = 'Загрузить из файла'
+      OnClick = menu_loadClick
+    end
+    object menu_save: TMenuItem
+      Caption = 'Сохранить в файл'
+      OnClick = menu_saveClick
+    end
+  end
+  object Main_Save: TSaveDialog
+    left = 128
+    top = 480
+  end
+end

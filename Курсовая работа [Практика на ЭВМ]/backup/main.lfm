@@ -1,0 +1,25 @@
+object form_Main: Tform_Main
+  Left = 363
+  Height = 604
+  Top = 44
+  Width = 1009
+  Caption = 'Змейка'
+  ClientHeight = 604
+  ClientWidth = 1009
+  Color = 16760704
+  LCLVersion = '1.8.2.0'
+  object BitBtn1: TBitBtn
+    Left = 120
+    Height = 77
+    Top = 168
+    Width = 243
+    BorderSpacing.Left = 20
+    BorderSpacing.Bottom = 20
+    BorderSpacing.Around = 20
+    BorderSpacing.CellAlignHorizontal = ccaCenter
+    BorderSpacing.CellAlignVertical = ccaCenter
+    Caption = 'Начать игру'
+    GlyphShowMode = gsmNever
+    TabOrder = 0
+  end
+end

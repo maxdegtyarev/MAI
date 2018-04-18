@@ -1,0 +1,162 @@
+object main_form: Tmain_form
+  Left = 281
+  Height = 568
+  Top = 58
+  Width = 940
+  Caption = 'Таблица истиности'
+  ClientHeight = 548
+  ClientWidth = 940
+  Menu = main_menu
+  OnCreate = FormCreate
+  LCLVersion = '1.8.2.0'
+  object main_input: TEdit
+    Left = 8
+    Height = 23
+    Top = 24
+    Width = 669
+    Anchors = [akTop, akLeft, akRight]
+    PopupMenu = INPUT_DIALOG
+    TabOrder = 0
+    Text = 'A + (B + C)'
+  end
+  object main_createtable: TButton
+    Left = 688
+    Height = 25
+    Top = 24
+    Width = 224
+    Anchors = [akTop, akLeft, akRight]
+    Caption = 'Построить таблицу истинности'
+    OnClick = main_createtableClick
+    TabOrder = 1
+  end
+  object main_table: TStringGrid
+    Left = 8
+    Height = 368
+    Top = 64
+    Width = 904
+    Anchors = [akTop, akLeft, akRight]
+    ColCount = 1
+    Flat = True
+    PopupMenu = Matrix_popup
+    RowCount = 1
+    TabOrder = 2
+  end
+  object main_sdnf: TLabel
+    Left = 64
+    Height = 1
+    Top = 464
+    Width = 1
+    ParentColor = False
+    Visible = False
+  end
+  object main_sknf: TLabel
+    Left = 64
+    Height = 1
+    Top = 488
+    Width = 1
+    ParentColor = False
+    Visible = False
+  end
+  object main_sknf_lb: TLabel
+    Left = 9
+    Height = 15
+    Top = 492
+    Width = 33
+    Caption = 'СКНФ'
+    ParentColor = False
+  end
+  object main_sdnf_lb: TLabel
+    Left = 9
+    Height = 15
+    Top = 464
+    Width = 34
+    Caption = 'СДНФ'
+    ParentColor = False
+  end
+  object sdnf_text: TEdit
+    Left = 72
+    Height = 23
+    Top = 464
+    Width = 853
+    Anchors = [akTop, akLeft, akRight]
+    PopupMenu = SDNF_DIALOG
+    ReadOnly = True
+    TabOrder = 3
+  end
+  object sknf_text: TEdit
+    Left = 72
+    Height = 23
+    Top = 492
+    Width = 853
+    Anchors = [akTop, akLeft, akRight]
+    PopupMenu = SKNF_DIALOG
+    ReadOnly = True
+    TabOrder = 4
+  end
+  object main_menu: TMainMenu
+    left = 843
+    top = 416
+    object main_menu_file: TMenuItem
+      Caption = 'Файл'
+      object main_menu_file_exit: TMenuItem
+        Caption = 'Выход'
+        OnClick = main_menu_file_exitClick
+      end
+    end
+    object main_menu_help: TMenuItem
+      Caption = '?'
+      object menu_menu_help_author: TMenuItem
+        Caption = 'Автор'
+        OnClick = menu_menu_help_authorClick
+      end
+      object menu_menu_help_source: TMenuItem
+        Caption = 'Исходный код'
+        OnClick = menu_menu_help_sourceClick
+      end
+      object menu_menu_help_help: TMenuItem
+        Caption = 'Помощь'
+        OnClick = menu_menu_help_helpClick
+      end
+    end
+  end
+  object Matrix_popup: TPopupMenu
+    left = 16
+    top = 512
+    object main_popup_save: TMenuItem
+      Caption = 'Сохранить матрицу'
+      OnClick = main_popup_saveClick
+    end
+  end
+  object Main_Save: TSaveDialog
+    left = 48
+    top = 512
+  end
+  object SDNF_DIALOG: TPopupMenu
+    left = 68
+    top = 440
+    object sdnf_open: TMenuItem
+      Caption = 'Сохранить в файл'
+      OnClick = sdnf_openClick
+    end
+  end
+  object SKNF_DIALOG: TPopupMenu
+    left = 120
+    top = 440
+    object sknf_save: TMenuItem
+      Caption = 'Сохранить в файл'
+      OnClick = sknf_saveClick
+    end
+  end
+  object INPUT_DIALOG: TPopupMenu
+    left = 160
+    top = 440
+    object input_open: TMenuItem
+      Caption = 'Открыть из файла'
+      OnClick = input_openClick
+    end
+  end
+  object Main_Open: TOpenDialog
+    left = 87
+    top = 527
+  end
+end
