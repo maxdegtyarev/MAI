@@ -1,7 +1,7 @@
 object form_Main: Tform_Main
-  Left = 64
+  Left = 4
   Height = 466
-  Top = 102
+  Top = 256
   Width = 1188
   BorderStyle = bsToolWindow
   Caption = 'Лаба 1'

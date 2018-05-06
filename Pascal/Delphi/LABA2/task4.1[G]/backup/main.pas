@@ -391,6 +391,8 @@ begin
       //Дополнительно
       if ((c in alphabet) and (i <> 1) and (sys[i-1] = ')')) then begin
          ShowMessage('Ошибка! Вы забыли оператор после закрывающей скобки');
+         metka := True;
+         break;
       end;
       if (c in symbols) then
       begin {Если оператор}
@@ -400,6 +402,11 @@ begin
           begin //Если это открывающая или закрывающая скобки
             if (c = '(') then
             begin
+              if ((sys[i+1] in opers) or (sys[i+1] = ')')) then begin
+                 ShowMessage('Ошибка! Бинарный оператор после скобки использовать зазорно. Ещё пустые скобки тоже плохо');
+                 metka:= true;
+                 break;
+              end;
               Inc(brackets);
             end
             else if ((c = ')') and (sys[i + 1] <> '(')) then
@@ -440,6 +447,13 @@ begin
               begin
                 ShowMessage(
                   '(2) Неправильно...Для 2x и более отрицаний использовать скобки. Например, /(/A))');
+                metka := True;
+                break;
+              end;
+              if ((sys[i + 1] in opers)) then
+              begin // )/A, /+A, (A+/)
+                ShowMessage(
+                  'Нельзя писать что-то похожее на /+F');
                 metka := True;
                 break;
               end;

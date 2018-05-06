@@ -45,7 +45,7 @@ end;
 
 procedure TForm1.FormPaint(Sender: TObject);
 begin
-    Form1.Canvas.Pen.Color:= clGreen; //RGBTOCOLOR(..);
+  Form1.Canvas.Pen.Color:= clGreen; //RGBTOCOLOR(..);
   Form1.Canvas.Pen.Style:= psDashDot;
   Form1.Canvas.Pen.Width:=5;
   Form1.Canvas.Brush.Color:= clRed;

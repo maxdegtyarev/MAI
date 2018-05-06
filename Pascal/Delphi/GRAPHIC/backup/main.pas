@@ -40,6 +40,7 @@ begin
   Form1.Canvas.Pen.Width:=5;
   Form1.Canvas.Brush.Color:= clRed;
   Form1.Canvas.Rectangle(10,10,100,100);
+  x:= 0;
 end;
 
 procedure TForm1.FormPaint(Sender: TObject);

@@ -73,13 +73,29 @@ var
   form_Main: Tform_Main;
   matr1, matr2, res: matrix;
   n, m, k, v: integer;
-  fv,fv2: boolean;
+  fv, fv2: boolean;
+
 implementation
 
 uses
   about, Source, help;
 
 {$R *.lfm}
+function Repl(ins: string; ch1, ch2: string): string;
+var
+  s:string;
+  i:integer;
+
+begin
+  s:= ins;
+  while (pos(ch1,s)<>0) do
+  begin
+    i:=pos(ch1,s);
+    delete(s,i,ch1.length);
+    insert(ch2,s,i);
+  end;
+  result:= s;
+end;
 
 { Tform_Main }
 //Функция проверки вводимого числа. Вернёт False при возникновении ошибки
@@ -87,20 +103,15 @@ function PreCheck(ins: string): boolean;
 const
   elength = 150; //Максимальная степень ешки
 var
-  nums: set of char = ['0'..'9', '-', 'e','E', ',', '#'];
+  nums: set of char = ['0'..'9', '-', 'e', 'E', ',', '#'];
   onums: set of char = ['0'..'9'];
   NCFLAG: boolean;
   BUFFER: string;
   //То, что по своей природе может иметь запись числа
-  minuses,minuses_e,k, eses, punks, i, j: integer; //Количество минусов
+  minuses, minuses_e, k, eses, punks, i, j: integer; //Количество минусов
 begin
   //Предварительное удаление точек, замена их на запятые
-   while (pos(ins, '.') <> 0) do
-   begin
-        i := pos(ins, '.');
-        Delete(ins, i, length(ins));
-        insert(',', ins, i);
-   end;
+  ins:= Repl(ins,'.',',');
 
   if (ins <> '') then
   begin
@@ -109,7 +120,7 @@ begin
     minuses := 0;
     eses := 0;
     punks := 0;
-    minuses_e:= 0;
+    minuses_e := 0;
     ins := ins + '#';
     for i := 1 to ins.Length do
     begin
@@ -124,7 +135,8 @@ begin
         begin
           if ((i = 1) and (ins[i + 1] <> '#')) then
             Inc(minuses)
-          else if ((i <> 1) and (ins[i+1] <> '#') and (eses = 1) and((ins[i-1] = 'e') or (ins[i-1] = 'E'))) then
+          else if ((i <> 1) and (ins[i + 1] <> '#') and (eses = 1) and
+            ((ins[i - 1] = 'e') or (ins[i - 1] = 'E'))) then
             Inc(Minuses_e)
           else
             NCFLAG := True;
@@ -148,7 +160,8 @@ begin
           //Тут свой подход. После ешки не должно быть числа больше ограничения + не должно быть запятых
           if ((i > 1) and (ins[i] <> '#')) then
           begin
-            if ((ins[i - 1] in onums) and ((ins[i + 1] in onums) or (ins[i+1] = '-'))) then
+            if ((ins[i - 1] in onums) and ((ins[i + 1] in onums) or
+              (ins[i + 1] = '-'))) then
             begin
               Inc(eses);
               for j := i + 1 to ins.Length do
@@ -165,7 +178,11 @@ begin
                   break;
                 end;
               end;
-              if (precheck(BUFFER) = false) then begin NCFLAG:= true; BUFFER:= '1'; end;
+              if (precheck(BUFFER) = False) then
+              begin
+                NCFLAG := True;
+                BUFFER := '1';
+              end;
               if (StrToFloat(BUFFER) > elength) then
               begin
                 NCFLAG := True;
@@ -181,7 +198,8 @@ begin
       end;
     end;
     //ShowMessage(IntToStr(eses) + ' ' + IntToStr(minuses) + ' ' + IntToStr(punks));
-    if ((eses <= 1) and (minuses <= 1) and (minuses_e <= 1) and (punks <= 1) and (NCFLAG <> True)) then
+    if ((eses <= 1) and (minuses <= 1) and (minuses_e <= 1) and
+      (punks <= 1) and (NCFLAG <> True)) then
       Result := True
     else
       Result := False;
@@ -196,7 +214,7 @@ var
   dm, col, row, i, j: integer;
   metka: boolean;//Строк и столбцов матрицы
 begin
-  metka:= false;
+  metka := False;
   //Препроверка матрицы
   col := from.ColCount;
   row := from.RowCount;
@@ -206,13 +224,21 @@ begin
     begin
       if ((precheck(from.Cells[i, j]) <> True)) then
       begin
-        ShowMessage('Некорректный ввод. Если было вещественное с точкой, точка будет заменена. Иначе, замена на нуль');
-        metka:= true;
+        ShowMessage('Некорректный ввод. Произведена замена нулями');
+        metka := True;
         exit;
       end;
-      ato[j, i] := StrToFloat(from.Cells[i, j]);
+      val(Repl(from.Cells[i, j],',','.'), ato[j, i], dm);
+      if (dm <> 0) then
+      begin
+        ShowMessage(
+          'Обработана критическая ошибка с числом. Замена на нуль при счёте');
+        metka := True;
+        exit;
+      end;
     end;
-    if metka = true then exit;
+    if metka = True then
+      exit;
   end;
 end;
 
@@ -285,7 +311,7 @@ var
   i, j: integer;
   memes: string;
 begin
-  memes:= '';
+  memes := '';
   if ((Dialog.Execute) and (Dialog.FileName <> '')) then
   begin
     AssignFile(Fl, Dialog.FileName);
@@ -302,13 +328,13 @@ begin
     begin
       for j := 0 to Table.ColCount - 1 do
       begin
-        memes:= memes + Table.Cells[j, i] + ' ';
+        memes := memes + Table.Cells[j, i] + ' ';
       end;
-      delete(memes,memes.length,1);
+      Delete(memes, memes.length, 1);
       Writeln(Fl, memes);
-      memes:= '';
+      memes := '';
     end;
-      closeFile(Fl);
+    closeFile(Fl);
   end;
 end;
 
@@ -406,7 +432,7 @@ end;
 
 procedure Tform_Main.checkbox_privChange(Sender: TObject);
 begin
-   matrix2_v1.Enabled:=not(matrix2_v1.Enabled);
+  matrix2_v1.Enabled := not (matrix2_v1.Enabled);
 end;
 
 procedure Tform_Main.FormCreate(Sender: TObject);
@@ -455,12 +481,13 @@ end;
 procedure Tform_Main.matrix1_vChange(Sender: TObject);
 begin
   matrix1.ColCount := matrix1_v.Value;
-  if (checkbox_priv.Checked = true) then matrix2.RowCount := matrix1_v.Value;
+  if (checkbox_priv.Checked = True) then
+    matrix2.RowCount := matrix1_v.Value;
 end;
 
 procedure Tform_Main.matrix2_v1Change(Sender: TObject);
 begin
-  matrix2.RowCount:= matrix2_v1.Value;
+  matrix2.RowCount := matrix2_v1.Value;
 end;
 
 
@@ -493,13 +520,15 @@ end;
 
 procedure Tform_Main.popup_matrix1_saveClick(Sender: TObject);
 begin
-  matrix1.RowCount := 0;
-  matrix1.ColCount := 0;
+  matrix1.RowCount := 1;
+  matrix1.ColCount := 1;
   matrix1_u.Value := matrix1.RowCount;
   ReadFromFile(matrix1, matr_opendialog);
-  matrix1_u.Value := matrix1.RowCount-1;
+  matrix1_u.Value := matrix1.RowCount - 1;
   matrix1_v.Value := matrix1.ColCount;
-  if (checkbox_priv.Checked = true) then matrix2.RowCount:=matrix1_v.Value;
+  if (checkbox_priv.Checked = True) then
+    matrix2.RowCount := matrix1_v.Value;
+  if ((matrix1.RowCount = 2) and (matrix1.Cells[0,1] = '')) then matrix1.RowCount:= matrix1.RowCount - 1;
   //if fv = true then matrix1.ColCount:=matrix1.ColCount - matrix1.ColCount - 1;
 end;
 
@@ -510,14 +539,15 @@ end;
 
 procedure Tform_Main.popup_matrix2_save2Click(Sender: TObject);
 begin
-  matrix2.RowCount := 0;
-  matrix2.ColCount := 0;
+  matrix2.RowCount := 1;
+  matrix2.ColCount := 1;
   matrix2_v.Value := matrix2.ColCount;
   ReadFromFile(matrix2, matr_opendialog);
-  matrix2.RowCount:=Matrix2.RowCount-1;
+  matrix2.RowCount := Matrix2.RowCount - 1;
   matrix2_v.Value := matrix2.ColCount;
-  if (checkbox_priv.Checked = false) then matrix2_v1.Value := matrix2.RowCount;
- // matrix2_v1.Value;
+  if (checkbox_priv.Checked = False) then
+    matrix2_v1.Value := matrix2.RowCount;
+  // matrix2_v1.Value;
 end;
 
 procedure Tform_Main.popup_matrix3_open3Click(Sender: TObject);

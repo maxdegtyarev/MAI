@@ -1,7 +1,7 @@
 object main_form: Tmain_form
-  Left = 281
+  Left = 340
   Height = 568
-  Top = 58
+  Top = 95
   Width = 940
   Caption = 'Таблица истиности'
   ClientHeight = 548

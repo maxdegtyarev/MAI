@@ -1,12 +1,13 @@
 object form_Main: Tform_Main
-  Left = 225
+  Left = 185
   Height = 604
-  Top = 61
+  Top = 55
   Width = 1009
   Caption = 'Змейка'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 604
+  ClientWidth = 1009
   Color = 16760704
+  OnCreate = FormCreate
   LCLVersion = '1.8.2.0'
   object BitBtn1: TBitBtn
     Left = 376

@@ -1,0 +1,127 @@
+object form_main: Tform_main
+  Left = 255
+  Height = 551
+  Top = 101
+  Width = 1051
+  Caption = 'form_main'
+  ClientHeight = 551
+  ClientWidth = 1051
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  LCLVersion = '1.8.2.0'
+  object shape_main: TShape
+    Left = 16
+    Height = 512
+    Top = 32
+    Width = 624
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    OnMouseDown = shape_mainMouseDown
+    OnMouseMove = shape_mainMouseMove
+  end
+  object label_coord_x: TLabel
+    Left = 16
+    Height = 15
+    Top = 8
+    Width = 6
+    Caption = '0'
+    ParentColor = False
+  end
+  object label_x: TLabel
+    Left = 40
+    Height = 15
+    Top = 8
+    Width = 5
+    Caption = 'x'
+    ParentColor = False
+  end
+  object label_coord_y: TLabel
+    Left = 64
+    Height = 15
+    Top = 8
+    Width = 6
+    Caption = '0'
+    ParentColor = False
+  end
+  object group_figures: TGroupBox
+    Left = 640
+    Height = 136
+    Top = 32
+    Width = 400
+    Anchors = [akTop, akRight, akBottom]
+    Caption = 'Фигуры'
+    ClientHeight = 116
+    ClientWidth = 396
+    TabOrder = 0
+    object figure_ellipse: TButton
+      Left = 32
+      Height = 25
+      Top = 8
+      Width = 152
+      Caption = 'Эллипс'
+      OnClick = figure_ellipseClick
+      TabOrder = 0
+    end
+    object figure_pool: TButton
+      Left = 32
+      Height = 25
+      Top = 40
+      Width = 152
+      Caption = 'Окружность'
+      OnClick = figure_ellipseClick
+      TabOrder = 1
+    end
+    object figure_pr: TButton
+      Left = 32
+      Height = 25
+      Top = 72
+      Width = 152
+      Caption = 'Прямоугольник'
+      OnClick = figure_ellipseClick
+      TabOrder = 2
+    end
+    object figure_sector: TButton
+      Left = 192
+      Height = 25
+      Top = 8
+      Width = 128
+      Caption = 'Сектор'
+      OnClick = figure_ellipseClick
+      TabOrder = 3
+    end
+    object figure_treug: TButton
+      Left = 192
+      Height = 25
+      Top = 40
+      Width = 128
+      Caption = 'Треугольник'
+      OnClick = figure_ellipseClick
+      TabOrder = 4
+    end
+    object figure_otrez: TButton
+      Left = 192
+      Height = 25
+      Top = 72
+      Width = 128
+      Caption = 'Отрезок'
+      OnClick = figure_ellipseClick
+      TabOrder = 5
+    end
+  end
+  object logs: TListBox
+    Left = 647
+    Height = 88
+    Top = 456
+    Width = 404
+    ItemHeight = 0
+    TabOrder = 1
+  end
+  object reset: TButton
+    Left = 647
+    Height = 34
+    Top = 416
+    Width = 64
+    Caption = 'Отменить'
+    OnClick = resetClick
+    TabOrder = 2
+  end
+end

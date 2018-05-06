@@ -1,0 +1,41 @@
+object main_form: Tmain_form
+  Left = 309
+  Height = 394
+  Top = 105
+  Width = 758
+  Caption = 'Определитель'
+  ClientHeight = 394
+  ClientWidth = 758
+  LCLVersion = '1.8.2.0'
+  object matrix: TStringGrid
+    Left = 16
+    Height = 184
+    Top = 24
+    Width = 232
+    AutoEdit = False
+    ColCount = 1
+    FixedCols = 0
+    FixedRows = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 1
+    TabOrder = 0
+  end
+  object matrix_spinedit: TSpinEdit
+    Left = 16
+    Height = 23
+    Top = 224
+    Width = 48
+    OnChange = matrix_spineditChange
+    TabOrder = 1
+    Value = 1
+  end
+  object main_button: TButton
+    Left = 80
+    Height = 25
+    Top = 224
+    Width = 168
+    Caption = 'Считать'
+    OnClick = main_buttonClick
+    TabOrder = 2
+  end
+end

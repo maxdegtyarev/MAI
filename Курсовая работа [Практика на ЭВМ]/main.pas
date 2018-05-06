@@ -14,6 +14,7 @@ type
 
   Tform_Main = class(TForm)
     BitBtn1: TBitBtn;
+    procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -26,6 +27,14 @@ var
 implementation
 
 {$R *.lfm}
+
+{ Tform_Main }
+
+procedure Tform_Main.FormCreate(Sender: TObject);
+begin
+  form_Main.Canvas.Pen.Color:=clWhite;
+  form_Main.Canvas.Pen.;
+end;
 
 end.
 
