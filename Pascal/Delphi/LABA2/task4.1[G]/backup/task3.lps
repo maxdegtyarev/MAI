@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="8">
+    <Units Count="6">
       <Unit0>
         <Filename Value="task3.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -12,7 +12,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="152"/>
       </Unit0>
       <Unit1>
         <Filename Value="main.pas"/>
@@ -21,9 +21,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="390"/>
-        <CursorPos X="120" Y="406"/>
-        <UsageCount Value="110"/>
+        <TopLine Value="392"/>
+        <CursorPos X="65" Y="404"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -34,7 +34,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="121"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -46,7 +46,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="7"/>
         <CursorPos X="20" Y="36"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="121"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -57,34 +57,17 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="3"/>
         <CursorPos X="9" Y="2"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="121"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
-        <Filename Value="C:\lazarus\lcl\grids.pas"/>
-        <UnitName Value="Grids"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="9599"/>
-        <CursorPos X="7" Y="9602"/>
-        <UsageCount Value="2"/>
-      </Unit5>
-      <Unit6>
-        <Filename Value="..\..\..\..\..\storage2\istintab.pas"/>
-        <ComponentName Value="Form1"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="20"/>
-        <UsageCount Value="1"/>
-      </Unit6>
-      <Unit7>
         <Filename Value="C:\lazarus\components\lazutils\dynamicarray.pas"/>
         <UnitName Value="DynamicArray"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="152"/>
         <CursorPos X="5" Y="152"/>
-        <UsageCount Value="9"/>
-      </Unit7>
+        <UsageCount Value="5"/>
+      </Unit5>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>

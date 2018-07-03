@@ -1,7 +1,7 @@
 object form_source: Tform_source
-  Left = 140
+  Left = 486
   Height = 643
-  Top = 348
+  Top = 194
   Width = 937
   Caption = 'Исходный код'
   ClientHeight = 643

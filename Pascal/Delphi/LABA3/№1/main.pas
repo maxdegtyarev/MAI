@@ -407,6 +407,7 @@ end;
 
 procedure Tform_main.FormPaint(Sender: TObject);
 begin
+      GetBuf(Shape);
   if flag = True then
   begin
     fig(Shape);
@@ -655,8 +656,7 @@ begin
   oy.Caption := IntToStr(D);
   if flag = True then
   begin
-    repaint;
-    GetBuf(Shape);
+    update;
     case instrument of
       1, 2, 4, 5:
       begin

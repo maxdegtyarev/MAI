@@ -1,0 +1,29 @@
+object form_help: Tform_help
+  Left = 471
+  Height = 319
+  Top = 37
+  Width = 443
+  BorderStyle = bsToolWindow
+  Caption = 'Помощь'
+  ClientHeight = 319
+  ClientWidth = 443
+  LCLVersion = '1.8.2.0'
+  object Memo1: TMemo
+    Left = 0
+    Height = 311
+    Top = 8
+    Width = 440
+    Lines.Strings = (
+      'Выберите обьект;'
+      'Нажмите по форме левой кнопкой мыши'
+      'Отпустите левую кнопку мыши'
+      'Водя курсором сделайте необходимую фигуру'
+      'Нажмите ещё раз'
+      '...'
+      'Если вы передумали добавлять фигуру во время рисования, нажмите правую кнопку мыши'
+      'Если вы хотите убрать добавленную фигуру, отмените измненение'
+    )
+    ReadOnly = True
+    TabOrder = 0
+  end
+end

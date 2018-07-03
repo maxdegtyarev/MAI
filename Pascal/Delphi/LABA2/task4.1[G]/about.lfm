@@ -1,7 +1,7 @@
 object form_author: Tform_author
-  Left = 381
+  Left = 370
   Height = 264
-  Top = 177
+  Top = 316
   Width = 545
   BorderStyle = bsToolWindow
   Caption = 'Автор'

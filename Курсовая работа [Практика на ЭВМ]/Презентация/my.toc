@@ -1,0 +1,8 @@
+\pdcontentsline{0}{2}{{\normalsize Цели работы}}
+\pdcontentsline{0}{3}{{\normalsize Задачи}}
+\pdcontentsline{0}{4}{{\normalsize Результат}}
+\pdcontentsline{0}{5}{{\normalsize Результат}}
+\pdcontentsline{0}{6}{{\normalsize Результат}}
+\pdcontentsline{0}{7}{{\normalsize Результат}}
+\pdcontentsline{0}{8}{{\normalsize Результат}}
+\pdcontentsline{0}{9}{{\normalsize Результат}}

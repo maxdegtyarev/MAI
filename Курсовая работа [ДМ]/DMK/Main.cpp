@@ -4,8 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <Windows.h>
-#include <stack>
 #include <queue>
 
 #define MAX 500
@@ -23,6 +21,8 @@ int marsh[MAX];
 int R = 0;
 int NUM = 0;
 int N = 0;
+int global[MAX] = { 0 };
+
 string timepute = "";
 
 /*
@@ -108,20 +108,44 @@ void zapolnen()
 	}
 }
 
+string BFS(int from)
+{
+	string res = "";
+	queue<int> Queue;
+	res+= "{ ";
+
+	int nodes[MAX]; // вершины графа
+	for (int i = 0; i < N; i++)
+		nodes[i] = 0; // исходно все вершины равны 0
+	Queue.push(from); // помещаем в очередь первую вершину
+	while (!Queue.empty())
+	{ // пока очередь не пуста
+		int node = Queue.front(); // извлекаем вершину
+		Queue.pop();
+		nodes[node] = 2; // отмечаем ее как посещенную
+		global[node] = 1;
+		res+= to_string(node) + ",";
+		for (int j = 0; j < N; j++)
+		{ // проверяем для нее все смежные вершины
+			if (graph[node][j] > 0 && nodes[j] == 0)
+			{ // если вершина смежная и не обнаружена
+				Queue.push(j); // добавляем ее в очередь
+				nodes[j] = 1; // отмечаем вершину как обнаруженную 
+			}
+		}
+	}
+	res.erase(res.length() - 1, 1);
+	res += " }\n";
+	return res;
+}
 
 int main(int argc, char *argv[])
 {
 	//Первая часть задачи - BFS дерево и расстояния
 	string rez = "";
+	rez += "2018, Максим Дегтярев. 80-112Б-17\n";
 	GetData(argv);
-	for (int i = 0; i < N; i++)
-	{
-		for (int j = 0; j < N; j++)
-		{
-			cout << graph[i][j] << " ";
-		}
-		cout << endl;
-	}
+
 	for (int i = 0; i < N; i++)
 	{
 		lenght[i] = 1e+9;
@@ -161,9 +185,10 @@ int main(int argc, char *argv[])
 	for (int i = 0; i < N; i++)
 	{
 		print_way(i);
-		rez += timepute + " длина: " + ((lenght[i] == 1e+9) ? ("нет пути из вершины " + to_string(NUM)) : (to_string(lenght[i]))) + " \n";
+		rez += "До вершины: " + to_string(i) + " : "+ timepute + " длина: " + ((lenght[i] == 1e+9) ? ("нет пути из вершины " + to_string(NUM)) : (to_string(lenght[i]))) + " \n";
 		timepute = "";
 	}
+	//Нашли расстояния - строим дерево. BFS дерево - дерево минимальных расстояний между вершинами
 
 	//Строим BFS дерево
 	for (int i = 0; i < N; i++)
@@ -172,8 +197,20 @@ int main(int argc, char *argv[])
 		zapolnen();
 		R = 0;
 	}
+	//Достраиваем то, что потеряли при постройке
 	//Вторая часть задачи - компоненты связности
+	
+	rez += "Компоненты связности\n";
+
+	for (int i = 0; i < N; i++)
+	{
+		if (global[i] == 0)
+		{
+			rez += BFS(i);
+		}
+	}
 
 	SendData(argv, rez);
+	
 	return 0;
 }

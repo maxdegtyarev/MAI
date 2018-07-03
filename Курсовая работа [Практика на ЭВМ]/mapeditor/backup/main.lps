@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="main.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="card_editor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="redact"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="536"/>
+        <CursorPos X="16" Y="539"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="form_panel_obs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="form_panel_obj"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="58"/>
+        <CursorPos X="17" Y="64"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="form_panel_gmode.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="form_panel_mode"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="36"/>
+        <CursorPos X="38" Y="41"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="15" HistoryIndex="14">
+      <Position1>
+        <Filename Value="card_editor.pas"/>
+      </Position1>
+      <Position2>
+        <Filename Value="card_editor.pas"/>
+        <Caret Line="7" Column="18"/>
+      </Position2>
+      <Position3>
+        <Filename Value="card_editor.pas"/>
+        <Caret Line="629" Column="5" TopLine="609"/>
+      </Position3>
+      <Position4>
+        <Filename Value="form_panel_gmode.pas"/>
+        <Caret Line="17" Column="49"/>
+      </Position4>
+      <Position5>
+        <Filename Value="form_panel_obs.pas"/>
+      </Position5>
+      <Position6>
+        <Filename Value="form_panel_obs.pas"/>
+        <Caret Line="47" Column="13" TopLine="42"/>
+      </Position6>
+      <Position7>
+        <Filename Value="form_panel_gmode.pas"/>
+        <Caret Line="16" Column="16" TopLine="6"/>
+      </Position7>
+      <Position8>
+        <Filename Value="form_panel_gmode.pas"/>
+        <Caret Line="25" Column="16" TopLine="6"/>
+      </Position8>
+      <Position9>
+        <Filename Value="form_panel_gmode.pas"/>
+        <Caret Line="26" Column="16" TopLine="6"/>
+      </Position9>
+      <Position10>
+        <Filename Value="form_panel_gmode.pas"/>
+        <Caret Line="29" Column="40" TopLine="22"/>
+      </Position10>
+      <Position11>
+        <Filename Value="form_panel_gmode.pas"/>
+        <Caret Line="43" Column="40"/>
+      </Position11>
+      <Position12>
+        <Filename Value="card_editor.pas"/>
+        <Caret Line="577" Column="19" TopLine="565"/>
+      </Position12>
+      <Position13>
+        <Filename Value="card_editor.pas"/>
+        <Caret Line="551" Column="3" TopLine="546"/>
+      </Position13>
+      <Position14>
+        <Filename Value="card_editor.pas"/>
+        <Caret Line="590" Column="11" TopLine="585"/>
+      </Position14>
+      <Position15>
+        <Filename Value="card_editor.pas"/>
+        <Caret Line="543" Column="3" TopLine="541"/>
+      </Position15>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

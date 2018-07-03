@@ -1,0 +1,78 @@
+object form_selectlevel: Tform_selectlevel
+  Left = 434
+  Height = 359
+  Top = 83
+  Width = 381
+  Caption = 'Выбор режима'
+  ClientHeight = 359
+  ClientWidth = 381
+  Color = clWhite
+  LCLVersion = '1.8.2.0'
+  object lb_title: TLabel
+    Left = 0
+    Height = 47
+    Top = 0
+    Width = 230
+    Caption = 'Выбор режима'
+    Color = clWhite
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = 16070760
+    Font.Height = -35
+    Font.Name = 'Segoe UI Light'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
+  object lb_selrezh: TLabel
+    Left = 8
+    Height = 25
+    Top = 96
+    Width = 121
+    Caption = 'Выбор сезона'
+    Color = clWhite
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = 16070760
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
+  object cmb_mode: TComboBox
+    Left = 152
+    Height = 33
+    Top = 96
+    Width = 184
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = 15101015
+    Font.Height = -19
+    Font.Name = 'Segoe UI Light'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ItemHeight = 25
+    ItemIndex = 0
+    Items.Strings = (
+      'Сезон 1'
+      'Сезон 2'
+      'Сезон 3'
+    )
+    OnChange = cmb_modeChange
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 0
+    Text = 'Сезон 1'
+  end
+  object btn_startgame: TButton
+    Left = 152
+    Height = 33
+    Top = 184
+    Width = 184
+    Caption = 'Начать игру'
+    OnClick = btn_startgameClick
+    TabOrder = 1
+  end
+end

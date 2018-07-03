@@ -1,0 +1,52 @@
+object redact: Tredact
+  Left = 562
+  Height = 330
+  Top = 47
+  Width = 528
+  BorderStyle = bsToolWindow
+  Caption = 'Редактор карт'
+  Menu = gmain
+  OnClick = FormClick
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnMouseDown = FormMouseDown
+  OnMouseMove = FormMouseMove
+  OnPaint = FormPaint
+  LCLVersion = '1.8.2.0'
+  object gmain: TMainMenu
+    left = 480
+    top = 272
+    object myfile: TMenuItem
+      Caption = 'Файл'
+      object open: TMenuItem
+        Caption = 'Открыть карту'
+        OnClick = openClick
+      end
+      object save: TMenuItem
+        Caption = 'Сохранить карту'
+        OnClick = saveClick
+      end
+    end
+    object instrum: TMenuItem
+      Caption = 'Инструменты'
+      object i_objects: TMenuItem
+        Caption = 'Обьекты'
+        OnClick = i_objectsClick
+      end
+      object i_gmode: TMenuItem
+        Caption = 'Тип игры'
+        OnClick = i_gmodeClick
+      end
+    end
+  end
+  object map_save: TSaveDialog
+    Filter = 'Файлы карт|*.map'
+    left = 448
+    top = 272
+  end
+  object map_open: TOpenDialog
+    Filter = 'Файлы карт|*.map'
+    left = 416
+    top = 272
+  end
+end

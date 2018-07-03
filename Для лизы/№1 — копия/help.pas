@@ -1,0 +1,30 @@
+unit help;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+
+type
+
+  { Tform_help }
+
+  Tform_help = class(TForm)
+    Memo1: TMemo;
+  private
+
+  public
+
+  end;
+
+var
+  form_help: Tform_help;
+
+implementation
+
+{$R *.lfm}
+
+end.
+

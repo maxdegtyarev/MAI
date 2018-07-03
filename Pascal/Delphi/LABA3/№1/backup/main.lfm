@@ -3,7 +3,7 @@ object form_main: Tform_main
   Height = 551
   Top = 95
   Width = 967
-  BorderStyle = bsNone
+  BorderStyle = bsToolWindow
   Caption = 'form_main'
   ClientHeight = 531
   ClientWidth = 967
