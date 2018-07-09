@@ -19,10 +19,7 @@ else:
                 result = sympy.solve(str(line))
                 Database.callFunction("ex_addeq", str(line), str(result))
                 nowid = Database.callFunction("ex_getidbyeq", str(line))
-                nowid = str(nowid)
-                fordel = "[(,)]"
-                for char in fordel:
-                    nowid = nowid.replace(char,"")
+                nowid = nowid[0][0]
                 #Получили nowid, добавляем в базу данных логов
                 rezstr = {
                     "equation": line,
@@ -34,9 +31,6 @@ else:
                 print(str(err))
                 Database.callFunction("ex_addeq", str(line) + "-> error", "Some Error")
                 nowid = Database.callFunction("ex_getidbyeq", str(line) + "-> error")
-                nowid = str(nowid)
-                fordel = "[(,)]"
-                for char in fordel:
-                    nowid = nowid.replace(char, "")
+                nowid = nowid[0][0]
                 rezstr = str("{Error: " + str(err) + " }")
                 Database.callFunction("ex_addlog", int(nowid), rezstr, time.strftime("%H:%M:%S"))
