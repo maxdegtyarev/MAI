@@ -13,8 +13,12 @@ except IOError as error:
 else:
     with file:
         for line in file:
-            result = {
-                'equation': line,
-                'solve': sympy.solve(line)
-            }
-            logging.info(result)
+            try:
+                rez = sympy.solve(line)
+                result = {
+                    'equation': line,
+                    'solve': rez
+                }
+                logging.info(result)
+            except:
+                logging.info("Critical Error!")
